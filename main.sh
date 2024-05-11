@@ -1,27 +1,28 @@
-
 # Function to check if .aliases.sh is sourced in specified rc file and append it if not
 check_sourcing() {
     # Check if .aliases.sh is sourced in specified rc file, if not append it
     if ! grep -qxF 'source "$HOME/.aliases.sh"' "$HOME/$1"; then
-        echo 'source "$HOME/.aliases.sh"' >>"$HOME/$1"
+        echo "source \"\${HOME}/.aliases.sh\"" >>"${HOME}/$1"
     fi
 
-    source "$HOME/$1"
+    if ! source "${HOME}/$1"; then
+        echo "Error: Unable to source ${HOME}/$1"
+        return 1
+    fi
 }
 
-# Function to check if .bashrc or .zshrc exists and call check_sourcing accordingly
+# Function to check if rc file exists and call check_sourcing accordingly
 check_rc_files() {
     chmod +x "$HOME/.aliases.sh"
 
-    # Check if .bashrc exists
-    if [ -f "$HOME/.bashrc" ]; then
-        check_sourcing .bashrc
-    # Check if .zshrc exists
-    elif [ -f "$HOME/.zshrc" ]; then
-        check_sourcing .zshrc
-    else
-        echo "Error: rc(bashrc/zshrc/...) file not found. Please ensure it exists."
-    fi
+    chmod +x "${HOME}/.aliases.sh"
+
+    # Check if .rc file exists
+    case "$HOME" in
+        *".bashrc"*) check_sourcing .bashrc ;;
+        *".zshrc"*) check_sourcing .zshrc ;;
+        *) echo "Error: rc (bashrc/zshrc/...) file not found. Please ensure it exists." ;;
+    esac
 }
 
 # Function to download alias file using wget
