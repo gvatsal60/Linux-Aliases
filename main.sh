@@ -4,7 +4,7 @@ check_sourcing() {
 
     # Check if .aliases.sh is sourced in specified rc file, if not append it
     if ! grep -qxF 'source "${HOME}/.aliases.sh"' "$HOME/$1"; then
-        echo -e "\n" >> "${HOME}/$1"  # Add a blank line
+        echo -e "\n" >>"${HOME}/$1" # Add a blank line
         echo -e "# Sourcing custom aliases" >>"${HOME}/$1"
         echo "source \"\${HOME}/.aliases.sh\"" >>"${HOME}/$1"
     fi
@@ -54,15 +54,19 @@ function dw_alias_file_git() {
     check_rc_files # Call function to check rc files after downloading alias file
 }
 
-# Check if wget is available
-if command -v wget &>/dev/null; then
-    dw_alias_file_wget # Call function to download alias file using wget
-# Check if curl is available
-elif command -v curl &>/dev/null; then
-    dw_alias_file_curl # Call function to download alias file using curl
-# Check if git is available
-elif command -v git &>/dev/null; then
-    dw_alias_file_git # Call function to download alias file using git
+if [ -f "$HOME/.aliases.sh" ]; then
+    echo "File already exists: $HOME/.aliases.sh"
 else
-    echo "Either install wget, curl, or git"
+    # Check if wget is available
+    if command -v wget &>/dev/null; then
+        dw_alias_file_wget # Call function to download alias file using wget
+    # Check if curl is available
+    elif command -v curl &>/dev/null; then
+        dw_alias_file_curl # Call function to download alias file using curl
+    # Check if git is available
+    elif command -v git &>/dev/null; then
+        dw_alias_file_git # Call function to download alias file using git
+    else
+        echo "Either install wget, curl, or git"
+    fi
 fi
