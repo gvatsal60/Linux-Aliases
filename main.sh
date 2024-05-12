@@ -6,8 +6,8 @@ check_sourcing() {
 
     # Check if .aliases.sh is sourced in specified rc file, if not append it
     if ! grep -qxF "source \"${HOME}/.aliases.sh\"" "$HOME/$1"; then
-        printf "\n# Sourcing custom aliases" >>"${HOME}/$1"
-        echo "source \"\${HOME}/.aliases.sh\"" >>"${HOME}/$1"
+        printf "\n# Sourcing custom aliases\n" >>"${HOME}/$1"
+        echo "source \"$HOME/.aliases.sh\"" >>"${HOME}/$1"
     fi
 
     if [ -r "${HOME}/$1" ]; then
