@@ -1,5 +1,32 @@
 # shellcheck shell=sh
 
+##########################################################################################
+# Developer Information
+##########################################################################################
+# Developer's Name and Contact Information
+developer_name="[Vatsal Gupta]"
+developer_telegram="[https://t.me/gvatsal60]"
+repository_link="[https://github.com/gvatsal60/Linux-Aliases]"
+
+# Display developer information
+echo "Developer: $developer_name"
+echo "Contact: $developer_telegram"
+echo "Repository: $repository_link"
+
+##########################################################################################
+# License Information
+##########################################################################################
+# License
+license_name="Apache-2.0 license"
+license_link="[https://github.com/gvatsal60/Linux-Aliases/blob/master/LICENSE]"
+
+# Display license information
+echo "License: $license_name"
+echo "For details, please see the $license_name located at: $license_link"
+
+##########################################################################################
+# Functions
+##########################################################################################
 # Function to check if .aliases.sh is sourced in specified rc file and append it if not
 check_sourcing() {
     chmod +x "$HOME/.aliases.sh"
@@ -56,19 +83,36 @@ dw_alias_file_git() {
     check_rc_files # Call function to check rc files after downloading alias file
 }
 
-if [ -f "$HOME/.aliases.sh" ]; then
-    echo "File already exists: $HOME/.aliases.sh"
-else
-    # Check if wget is available
-    if command -v wget >/dev/null 2>&1; then
-        dw_alias_file_wget # Call function to download alias file using wget
-    # Check if curl is available
-    elif command -v curl >/dev/null 2>&1; then
-        dw_alias_file_curl # Call function to download alias file using curl
-    # Check if git is available
-    elif command -v git >/dev/null 2>&1; then
-        dw_alias_file_git # Call function to download alias file using git
+main() {
+    if [ -f "$HOME/.aliases.sh" ]; then
+        printf "File already exists: %s\n" "$HOME/.aliases.sh"
+        printf "Do you want to replace it? [y/n]: "
+        read -r replace_confirmation
+        if [ "$replace_confirmation" = "y" ]; then
+            # Replace the existing file
+            echo "Replacing $HOME/.aliases.sh..."
+        else
+            echo "Keeping existing file: $HOME/.aliases.sh"
+        fi
+        check_rc_files
     else
-        echo "Either install wget, curl, or git"
+        # Check if wget is available
+        if command -v wget >/dev/null 2>&1; then
+            dw_alias_file_wget # Call function to download alias file using wget
+        # Check if curl is available
+        elif command -v curl >/dev/null 2>&1; then
+            dw_alias_file_curl # Call function to download alias file using curl
+        # Check if git is available
+        elif command -v git >/dev/null 2>&1; then
+            dw_alias_file_git # Call function to download alias file using git
+        else
+            echo "Either install wget, curl, or git"
+        fi
     fi
-fi
+}
+
+##########################################################################################
+# Execution
+##########################################################################################
+echo ""
+main
