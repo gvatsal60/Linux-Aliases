@@ -3,8 +3,8 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/graphs/commit-activity)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/pull/)
 [![GitHub issues](https://img.shields.io/github/issues/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/issues/)
-[![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/network/)
-[![GitHub stars](https://img.shields.io/github/stars/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases)
+[![GitHub stars](https://img.shields.io/github/stars/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
 
 
 # Linux-Aliases 🖥️ 
