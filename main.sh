@@ -105,12 +105,13 @@ main() {
         printf "File already exists: %s\n" "$HOME/.aliases.sh"
         printf "Do you want to replace it? [y/n]: "
         read -r replace_confirmation
+        replace_confirmation="${replace_confirmation:-y}"
         if [ "$replace_confirmation" = "y" ]; then
             # Replace the existing file
-            echo "Replacing $HOME/.aliases.sh..."
+            printf "\nReplacing %s...\n" "$HOME/.aliases.sh"
             dw_alias_file
         else
-            echo "Keeping existing file: $HOME/.aliases.sh"
+            printf "\nKeeping existing file: %s\n" "$HOME/.aliases.sh"
         fi
     else
         dw_alias_file
