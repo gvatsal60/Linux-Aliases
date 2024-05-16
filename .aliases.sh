@@ -59,6 +59,7 @@ alias grep='grep --color=auto' # Enable colorized grep output
 # Miscellaneous
 ###################################################################################################
 alias vi='vim' # Use Vim as default text editor
+alias q='exit' # Exit the current shell session
 
 ###################################################################################################
 # Git

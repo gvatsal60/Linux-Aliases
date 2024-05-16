@@ -1,10 +1,9 @@
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
+![License](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/gvatsal60/Linux-Aliases/ShellCheck.yml)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/graphs/commit-activity)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/pull/)
-[![GitHub issues](https://img.shields.io/github/issues/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases/issues/)
-[![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases)
-[![GitHub stars](https://img.shields.io/github/stars/gvatsal60/Linux-Aliases.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
+![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/Linux-Aliases)
+![GitHub issues](https://img.shields.io/github/issues/gvatsal60/Linux-Aliases)
+![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases)
+![GitHub stars](https://img.shields.io/github/stars/gvatsal60/Linux-Aliases)
 
 
 # Linux-Aliases 🖥️ 
