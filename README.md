@@ -47,4 +47,4 @@ Once you've completed these steps, you'll have access to a variety of aliases th
 Contributions to this repository are welcome and encouraged. If you have additional aliases or improvements to existing ones, feel free to submit a pull request. Please ensure that any contributions align with the project's goals and adhere to the established coding conventions.
 
 ## License
-This project is licensed under the [Apache License 2.0](https://github.com/gvatsal60/Linux-Aliases/blob/main/LICENSE). Feel free to use, modify, and distribute this software according to the terms of this license.
+This project is licensed under the Apache 2.0 License. See the [LICENSE](https://www.apache.org/licenses/LICENSE-2.0) file for details. Feel free to use, modify, and distribute this software according to the terms of this license.
