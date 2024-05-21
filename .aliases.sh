@@ -24,6 +24,9 @@ alias mkdir='mkdir -p'                                 # Create directory and pa
 ###################################################################################################
 alias ..='cd ..'     # Go up one directory
 alias ...='cd ../..' # Go up two directories
+-() {                # Go to the previous directory
+    cd -
+}
 
 ###################################################################################################
 # System Information
