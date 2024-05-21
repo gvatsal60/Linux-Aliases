@@ -1,4 +1,4 @@
-# shellcheck shell=sh
+#!/bin/sh
 
 ##########################################################################################
 # Developer Information
@@ -32,9 +32,9 @@ check_sourcing() {
     chmod +x "$HOME/.aliases.sh"
 
     # Check if .aliases.sh is sourced in specified rc file, if not append it
-    if ! grep -qxF "source \"${HOME}/.aliases.sh\"" "$HOME/$1"; then
-        printf "\n# Sourcing custom aliases\n" >>"${HOME}/$1"
-        echo "source \"$HOME/.aliases.sh\"" >>"${HOME}/$1"
+    if ! grep -qxF ". \"\$HOME/.aliases.sh\"" "$HOME/$1"; then
+        printf "\n# Sourcing custom aliases\n" >> "${HOME}/$1"
+        echo ". \"\$HOME/.aliases.sh\"" >> "${HOME}/$1"
     fi
 
     if [ -r "${HOME}/$1" ]; then
