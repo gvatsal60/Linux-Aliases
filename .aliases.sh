@@ -1,5 +1,6 @@
+#!/bin/sh
 ###################################################################################################
-# Aliases script
+# Aliases Script
 # Author: [Vatsal Gupta]
 # Description: This script defines convenient aliases for common commands.
 # Usage: Source this script in your shell profile (e.g., ~/.bashrc, ~/.zshrc).
@@ -24,9 +25,6 @@ alias mkdir='mkdir -p'                                 # Create directory and pa
 ###################################################################################################
 alias ..='cd ..'     # Go up one directory
 alias ...='cd ../..' # Go up two directories
--() {                # Go to the previous directory
-    cd -
-}
 
 ###################################################################################################
 # System Information
@@ -75,7 +73,7 @@ alias gtc='git checkout'                                 # Switch branches or re
 alias gtclean='git clean -i'                             # Remove untracked files and directories interactively
 
 # Delete all local branches except "master" and "main" with confirmation
-alias gtcbd='read -p "Delete all local branches except master and main? [y/n]: " confirmation && [ "$confirmation" == "y" ] && git for-each-ref --format "%(refname:short)" refs/heads | grep -vE "^(master|main)$" | xargs git branch -d'
+alias gtcbd='git for-each-ref --format "%(refname:short)" refs/heads | grep -vE "^(master|main)$" | xargs git branch -d'
 
 ###################################################################################################
 # Docker

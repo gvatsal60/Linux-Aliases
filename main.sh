@@ -57,8 +57,11 @@ check_rc_files() {
     # Check if .zshrc exists
     elif [ -f "$HOME/.zshrc" ]; then
         check_sourcing .zshrc
+    # Check if .profile exists
+    elif [ -f "$HOME/.profile" ]; then
+        check_sourcing .profile
     else
-        echo "Error: rc(bashrc/zshrc/...) file not found. Please ensure it exists."
+        echo "Error: rc(bashrc/zshrc/profile) file not found. Please ensure it exists."
     fi
 }
 
