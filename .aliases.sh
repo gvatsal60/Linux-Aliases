@@ -71,6 +71,11 @@ alias gtdf='git diff --ignore-space-change'              # Show diff, ignoring c
 alias gsupdate='git submodule update --init --recursive' # Update submodules
 alias gtc='git checkout'                                 # Switch branches or restore working tree files
 alias gtclean='git clean -i'                             # Remove untracked files and directories interactively
+alias gcm='git commit'                                   # Committing changes
+alias gd='git diff'                                      # Showing differences
+alias gb='git branch'                                    # Managing branches
+alias ga='git add'                                       # Staging changes
+alias glpo='git log --pretty=oneline'                    # Concise commit history
 
 # Delete all local branches except "master" and "main" with confirmation
 alias gtcbd='git for-each-ref --format "%(refname:short)" refs/heads | grep -vE "^(master|main)$" | xargs git branch -d'
