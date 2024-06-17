@@ -6,7 +6,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/gvatsal60/Linux-Aliases)
 
 
-# Linux-Aliases 🖥️ 
+# Linux-Aliases 🖥️
 
 Simplify your command line experience with this collection of handy aliases for commands. Boost your productivity and streamline your workflow by shortening complex or frequently used commands into easily memorable shortcuts.
 
@@ -24,7 +24,7 @@ To start using these aliases, follow these simple steps:
 
 1. Run the following command in your terminal:
     ```sh
-    curl -sS https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/main.sh | sh
+    curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/main.sh | sh
     ```
 
 2. Depending on your operating system, you might need to source your shell configuration file to apply the changes:
