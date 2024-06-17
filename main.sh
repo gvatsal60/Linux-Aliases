@@ -73,7 +73,7 @@ dw_alias_file_wget() {
 
 # Function to download alias file using curl
 dw_alias_file_curl() {
-    curl -o "$HOME/.aliases.sh" "https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/.aliases.sh"
+    curl -fsSL -o "$HOME/.aliases.sh" "https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/.aliases.sh"
     check_rc_files # Call function to check rc files after downloading alias file
 }
 
