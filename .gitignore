@@ -1,0 +1,16 @@
+# Ignore compiled binaries (if any)
+*.out
+*.bin
+
+# Ignore logs and other generated files
+logs/
+*.log
+
+# Ignore temporary files
+*.tmp
+
+# Ignore any sensitive or environment-specific information
+.env
+
+# Ignore macOS specific files
+.DS_Store
