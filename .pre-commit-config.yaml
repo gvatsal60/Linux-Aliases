@@ -1,0 +1,17 @@
+repos:
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        description: This hook runs shellcheck for linting shell scripts
+
+  - repo: https://github.com/openstack/bashate
+    rev: 2.1.1
+    hooks:
+      - id: bashate
+        name: bashate
+        description: This hook runs bashate for linting shell scripts
+        entry: bashate
+        language: python
+        types: [shell]
