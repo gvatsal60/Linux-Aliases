@@ -6,7 +6,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases)
 ![GitHub stars](https://img.shields.io/github/stars/gvatsal60/Linux-Aliases)
 
-
+,nvs
 # Linux-Aliases 🖥️
 
 Simplify your command line experience with this collection of handy aliases for commands. Boost your productivity and streamline your workflow by shortening complex or frequently used commands into easily memorable shortcuts.
