@@ -89,7 +89,7 @@ dw_alias_file_git() {
 # Function to download alias file
 dw_alias_file() {
     # Check if wget is available
-    if command -v wget &>/dev/null; then
+    if command -v wget >/dev/null 2>&1; then
         dw_alias_file_wget # Call function to download alias file using wget
     # Check if curl is available
     elif command -v curl >/dev/null 2>&1; then
