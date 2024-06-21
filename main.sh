@@ -12,7 +12,7 @@ repository_link="[https://github.com/gvatsal60/Linux-Aliases]"
 echo "Developer: $developer_name"
 echo "Contact: $developer_telegram"
 echo "Repository: $repository_link"
-
+dsv
 ##########################################################################################
 # License Information
 ##########################################################################################
