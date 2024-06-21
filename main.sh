@@ -18,7 +18,7 @@ echo "Repository: $repository_link"
 ##########################################################################################
 # License
 license_name="Apache-2.0 license"
-license_link="[https://github.com/gvatsal60/Linux-Aliases/blob/master/LICENSE]"
+license_link="[https://github.com/gvatsal60/Linux-Aliases/blob/HEAD/LICENSE]"
 
 # Display license information
 echo "License: $license_name"
@@ -67,13 +67,13 @@ check_rc_files() {
 
 # Function to download alias file using wget
 dw_alias_file_wget() {
-    wget -O "$HOME/.aliases.sh" "https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/.aliases.sh"
+    wget -O "$HOME/.aliases.sh" "https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/.aliases.sh"
     check_rc_files # Call function to check rc files after downloading alias file
 }
 
 # Function to download alias file using curl
 dw_alias_file_curl() {
-    curl -fsSL -o "$HOME/.aliases.sh" "https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/.aliases.sh"
+    curl -fsSL -o "$HOME/.aliases.sh" "https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/.aliases.sh"
     check_rc_files # Call function to check rc files after downloading alias file
 }
 

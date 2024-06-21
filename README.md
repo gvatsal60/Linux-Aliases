@@ -24,7 +24,7 @@ To start using these aliases, follow these simple steps:
 
 1. Run the following command in your terminal:
     ```sh
-    curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/master/main.sh | sh
+    curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/main.sh | sh
     ```
 
 2. Depending on your operating system, you might need to source your shell configuration file to apply the changes:
