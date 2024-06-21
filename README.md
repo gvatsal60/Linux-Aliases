@@ -1,5 +1,6 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/gvatsal60/Linux-Aliases/ShellCheck.yml)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 ![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/Linux-Aliases)
 ![GitHub Issues](https://img.shields.io/github/issues/gvatsal60/Linux-Aliases)
 ![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases)
