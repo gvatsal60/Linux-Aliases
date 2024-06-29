@@ -8,7 +8,8 @@
                 "Gruntfuggly.todo-tree",
                 "DavidAnson.vscode-markdownlint",
                 "bierner.markdown-emoji",
-                "timonwong.shellcheck"
+                "timonwong.shellcheck",
+                "foxundermoon.shell-format"
             ]
         }
     }
