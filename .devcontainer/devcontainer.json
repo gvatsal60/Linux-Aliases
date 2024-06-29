@@ -1,0 +1,15 @@
+{
+    "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/main.sh | sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "esbenp.prettier-vscode",
+                "Gruntfuggly.todo-tree",
+                "DavidAnson.vscode-markdownlint",
+                "bierner.markdown-emoji",
+                "timonwong.shellcheck"
+            ]
+        }
+    }
+}
