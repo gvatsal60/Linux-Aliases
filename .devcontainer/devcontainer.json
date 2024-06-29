@@ -1,4 +1,5 @@
 {
+    "image" : "mcr.microsoft.com/devcontainers/base:jammy",
     "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/main.sh | sh",
     "customizations": {
         "vscode": {
