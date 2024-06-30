@@ -103,6 +103,7 @@ alias dcvol='docker volume'          # Docker volume commands
 alias dps='docker ps -a'        # List all containers, both running and stopped
 alias drm='docker container rm' # Remove one or more containers
 alias dimg='docker image'       # Docker image commands
+alias dimgs='docker image ls'   # Docker image list command
 
 # Miscellaneous
 alias dkall='docker kill $(docker ps -q)' # Kill all running containers
