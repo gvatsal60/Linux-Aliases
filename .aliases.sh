@@ -70,7 +70,7 @@ alias gtp='git pull'                                     # Pull changes from rem
 alias gtdf='git diff --ignore-space-change'              # Show diff, ignoring changes in whitespace
 alias gsupdate='git submodule update --init --recursive' # Update submodules
 alias gtc='git checkout'                                 # Switch branches or restore working tree files
-alias gtclean='git clean -i'                             # Remove untracked files and directories interactively
+alias gtclean='git clean -fd'                            # Remove untracked files and directories
 alias gcm='git commit'                                   # Committing changes
 alias gd='git diff'                                      # Showing differences
 alias gb='git branch'                                    # Managing branches
@@ -97,16 +97,15 @@ alias dcud='docker-compose up -d'    # Start services in detached mode
 alias dcstp='docker-compose stop'    # Stop services
 alias dcstart='docker-compose start' # Start services
 alias dcrmv='docker-compose rm -v'   # Remove stopped service containers and associated volumes
-alias dcvol='docker volume'          # Docker volume commands
 
 # Docker Container and Image Management
-alias dps='docker ps -a'        # List all containers, both running and stopped
-alias drm='docker container rm' # Remove one or more containers
-alias dimg='docker image'       # Docker image commands
-alias dimgs='docker image ls'   # Docker image list command
-
-# Miscellaneous
-alias dkall='docker kill $(docker ps -q)' # Kill all running containers
+alias dps='docker ps -a'                    # List all containers, both running and stopped
+alias drm='docker container rm'             # Remove one or more containers
+alias dimg='docker image'                   # Docker image commands
+alias dimgs='docker image ls'               # Docker image list command
+alias dvol='docker volume'                  # Docker volume commands
+alias dkall='docker kill $(docker ps -qa)'  # Kill all running containers
+alias drall='docker rm -f $(docker ps -qa)' # Remove all containers
 
 ###################################################################################################
 # Terraform
