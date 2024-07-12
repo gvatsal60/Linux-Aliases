@@ -4,9 +4,9 @@
 # File: install.sh
 # Author: Vatsal Gupta
 # Date: 12-Jul-2024
-# Description: Setup of custom aliases on a Linux system by downloading a 
-#              predefined .aliases.sh file from a GitHub repository and 
-#              integrating it into the user's shell configuration 
+# Description: Setup of custom aliases on a Linux system by downloading a
+#              predefined .aliases.sh file from a GitHub repository and
+#              integrating it into the user's shell configuration
 #              files (~/.bashrc, ~/.zshrc, or ~/.profile)
 ##########################################################################################
 
@@ -48,13 +48,13 @@ updaterc() {
         if [ -f "${_rc}" ]; then
             if ! grep -qxF ". \"\${HOME}/${FILE_NAME}\"" "${_rc}"; then
                 echo "Updating ${_rc} for ${ADJUSTED_ID}..."
-                printf "\n# Sourcing custom aliases\n. \"\${HOME}/${FILE_NAME}\"\n" >> "${_rc}"
+                printf "\n# Sourcing custom aliases\n. \"%s/%s\"\n" "$HOME" "$FILE_NAME" >> "${_rc}"
             fi
         else
             echo "Error: File ${_rc} does not exist."
             echo "Creating the ${_rc} file... although not sure if it will work."
             touch ${_rc}
-            printf "\n# Sourcing custom aliases\n. \"\${HOME}/${FILE_NAME}\"\n" >> "${_rc}"
+            printf "\n# Sourcing custom aliases\n. \"%s/%s\"\n" "$HOME" "$FILE_NAME" >> "${_rc}"
         fi
     fi
 }
