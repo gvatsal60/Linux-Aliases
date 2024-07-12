@@ -1,17 +1,59 @@
 {
-    "image" : "mcr.microsoft.com/devcontainers/base:jammy",
-    "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/main.sh | sh",
+    "capAdd": [
+      "SYS_PTRACE"
+    ],
     "customizations": {
-        "vscode": {
-            "extensions": [
-                "streetsidesoftware.code-spell-checker",
-                "esbenp.prettier-vscode",
-                "Gruntfuggly.todo-tree",
-                "DavidAnson.vscode-markdownlint",
-                "bierner.markdown-emoji",
-                "timonwong.shellcheck",
-                "foxundermoon.shell-format"
-            ]
+      "vscode": {
+        "extensions": [
+          "streetsidesoftware.code-spell-checker",
+          "esbenp.prettier-vscode",
+          "Gruntfuggly.todo-tree",
+          "DavidAnson.vscode-markdownlint",
+          "MindpathTechnologyLimited.code-error-lens",
+          "gurumukhi.selected-lines-count",
+          "bradzacher.vscode-copy-filename",
+          "PKief.material-icon-theme",
+          "timonwong.shellcheck",
+          "foxundermoon.shell-format"
+        ],
+        "settings": {
+          "editor.bracketPairColorization.enabled": true,
+          "editor.comments.insertSpace": true,
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.detectIndentation": false,
+          "editor.insertSpaces": true,
+          "editor.tabCompletion": "on",
+          "editor.tabSize": 2,
+          "editor.trimAutoWhitespace": true,
+          "explorer.confirmDelete": false,
+          "extensions.autoUpdate": true,
+          "extensions.ignoreRecommendations": true,
+          "files.autoSave": "afterDelay",
+          "files.eol": "auto",
+          "files.exclude": {
+            "**/.vscode": true
+          },
+          "search.exclude": {
+            "**/*.code-search": true,
+            "**/*.git": true,
+            "**/*.vscode-server": true,
+            "**/bower_components": true,
+            "**/node_modules": true
+          },
+          "windows.title": "${folderPath}",
+          "workbench.iconTheme": "material-icon-theme",
+          "workbench.startupEditor": "none"
         }
-    }
-}
+      }
+    },
+    "image": "mcr.microsoft.com/devcontainers/base:jammy",
+    "mounts": [
+      "source=${localWorkspaceFolder}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind"
+    ],
+    "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/install.sh | sh",
+    "runArgs": [
+      "--rm",
+      "--name=vsc-${localEnv:USER}-${containerWorkspaceFolderBasename}-${devcontainerId}"
+    ]
+  }
+  
