@@ -1,13 +1,48 @@
 repos:
+  # Syncs pre-commit dependencies with the latest versions.
+  - repo: https://github.com/mxr/sync-pre-commit-deps
+    rev: "v0.0.1"
+    hooks:
+      - id: sync-pre-commit-deps
+  # Pre-commit hooks for general file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.6.0"
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: double-quote-string-fixer
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+      - id: name-tests-test
+      - id: pretty-format-json
+        args: [--autofix, --no-ensure-ascii, --no-sort-keys]
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+  # ShellCheck hook for linting shell scripts
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
+    rev: "v0.10.0.1"
     hooks:
       - id: shellcheck
         name: shellcheck
         description: This hook runs shellcheck for linting shell scripts
-
+  # Bashate hook for linting shell scripts
   - repo: https://github.com/openstack/bashate
-    rev: 2.1.1
+    rev: "2.1.1"
     hooks:
       - id: bashate
         name: bashate
@@ -15,3 +50,13 @@ repos:
         entry: bashate
         language: python
         types: [shell]
+  # Yamlfmt for formatting YAML files
+  - repo: https://github.com/google/yamlfmt
+    rev: "v0.13.0"
+    hooks:
+      - id: yamlfmt
+  # Codespell for detecting common misspellings in code
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.3.0"
+    hooks:
+      - id: codespell

@@ -1,8 +1,9 @@
 # Linux-Aliases 🖥️
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/gvatsal60/Linux-Aliases/ShellCheck.yml)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![build status](https://github.com/gvatsal60/Linux-Aliases/actions/workflows/ShellCheck.yaml/badge.svg)](https://github.com/gvatsal60/Linux-Aliases/actions/workflows/ShellCheck.yaml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/gvatsal60/Linux-Aliases/master.svg)](https://results.pre-commit.ci/latest/github/gvatsal60/Linux-Aliases/HEAD)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/gvatsal60/Linux-Aliases/graphs/commit-activity)
 ![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/Linux-Aliases)
 ![GitHub Issues](https://img.shields.io/github/issues/gvatsal60/Linux-Aliases)
 ![GitHub forks](https://img.shields.io/github/forks/gvatsal60/Linux-Aliases)
@@ -33,7 +34,7 @@ To start using these aliases, follow these simple steps:
 1. Run the following command in your terminal:
 
     ```sh
-    curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/main.sh | sh
+    curl -fsSL https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/install.sh | sh
     ```
 
 2. Depending on your operating system, you might need to

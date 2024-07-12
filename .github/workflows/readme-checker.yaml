@@ -1,16 +1,13 @@
 name: Markdown Lint
-
 on:
   push:
   pull_request:
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Markdown Lint
         uses: DavidAnson/markdownlint-cli2-action@v16
         with:
