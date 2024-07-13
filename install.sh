@@ -19,6 +19,7 @@
 # Global Variables & Constants
 ##########################################################################################
 readonly FILE_NAME=".aliases.sh"
+readonly FILE_PATH="$HOME/$FILE_NAME"
 readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
 
 UPDATE_RC="${UPDATE_RC:-"true"}"
@@ -44,17 +45,23 @@ updaterc() {
             ;;
         esac
 
-        # Check if . "${HOME}/.aliases.sh" is already defined, if not then append it
+        # Check if "~.aliases.sh" is already sourced, if not then append it
+        ALIAS_SOURCE_BLOCK=$(printf "\n# Sourcing custom aliases\nif [ -f \"%s\" ]; then\n . \"%s\"\nfi\n" "$FILE_PATH" "$FILE_PATH")
+
         if [ -f "${_rc}" ]; then
-            if ! grep -qxF ". \"\${HOME}/${FILE_NAME}\"" "${_rc}"; then
+            if ! grep -qxF "$ALIAS_SOURCE_BLOCK" "${_rc}"; then
                 echo "Updating ${_rc} for ${ADJUSTED_ID}..."
-                printf "\n# Sourcing custom aliases\n. \"%s/%s\"\n" "$HOME" "$FILE_NAME" >> "${_rc}"
+                # Append the sourcing block to the RC file
+                printf "%s" "$ALIAS_SOURCE_BLOCK" >> "${_rc}"
             fi
         else
+            # Notify if the rc file does not exist
             echo "Error: File ${_rc} does not exist."
             echo "Creating the ${_rc} file... although not sure if it will work."
+            # Create the rc file
             touch ${_rc}
-            printf "\n# Sourcing custom aliases\n. \"%s/%s\"\n" "$HOME" "$FILE_NAME" >> "${_rc}"
+            # Append the sourcing block to the newly created rc file
+            printf "%s" "$ALIAS_SOURCE_BLOCK" >> "${_rc}"
         fi
     fi
 }

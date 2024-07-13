@@ -54,7 +54,7 @@ To start using these aliases, follow these simple steps:
    - For Others (Change rc file accordingly)
 
      ```sh
-     source ~/.rc
+     source ~/.profile
      ```
 
 Once you've completed these steps, you'll have access to a variety of aliases
