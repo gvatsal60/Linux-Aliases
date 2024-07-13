@@ -7,6 +7,50 @@
 ###################################################################################################
 
 ###################################################################################################
+# Functions
+###################################################################################################
+# Function: parse_git_branch
+# Description: Retrieves and formats the current Git branch name within square brackets.
+#
+# This function checks the current Git branch using 'git branch', hides any error output,
+# and formats the branch name surrounded by square brackets '[...]'. If not in a Git repository,
+# it returns an empty string.
+#
+# Usage:
+#   branch_name=$(parse_git_branch)
+#
+# Example:
+#   $ branch_name=$(parse_git_branch)
+#   $ echo "Current branch: $branch_name"
+#   Current branch: [main]
+#
+# Notes:
+#   - Ensure you are in a Git repository directory to use this function.
+#   - Redirects error output (if any) to /dev/null to maintain a clean output.
+#
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+}
+
+# Function: gsquash
+# Description: Initiates an interactive rebase to squash commits starting from the current branch's HEAD.
+# Usage:
+#   gsquash <Number of commits>
+#
+# This function uses 'git rebase -i HEAD~' to start an interactive rebase session,
+# allowing you to combine multiple commits into one or reorder commits as needed.
+#
+# Example:
+#   $ gsquash 5
+#
+# Notes:
+#   Make sure you are on the branch where you want to squash commits before running this command.
+#
+gsquash() {
+    git rebase -i HEAD~"$1"
+}
+
+###################################################################################################
 # File Management
 ###################################################################################################
 alias l='ls -CF'                                       # List files in column format

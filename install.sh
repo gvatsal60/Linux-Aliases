@@ -34,13 +34,13 @@ updaterc() {
     if [ "${UPDATE_RC}" = "true" ]; then
         case ${ADJUSTED_ID} in
         debian | rhel)
-            _rc=~/.bashrc
+            _rc="${HOME}/.bashrc"
             ;;
         alpine | arch)
-            _rc=~/.profile
+            _rc="${HOME}/.profile"
             ;;
         darwin)
-            _rc=~/.zshrc
+            _rc="${HOME}/.zshrc"
             ;;
         *)
             echo "Error: Unsupported or unrecognized os distribution ${ADJUSTED_ID}"
@@ -49,22 +49,23 @@ updaterc() {
         esac
 
         # Check if "~.aliases.sh" is already sourced, if not then append it
-        ALIAS_SOURCE_BLOCK=$(printf "if [ -f \"%s\" ]; then\n . \"%s\"\nfi\n" "${FILE_PATH}" "${FILE_PATH}")
+        ALIAS_SOURCE_BLOCK=$(printf "# BEGIN ALIAS_SOURCE_BLOCK\nif [ -f \"%s\" ]; then\n . \"%s\"\nfi\n# END ALIAS_SOURCE_BLOCK\n" "${FILE_PATH}" "${FILE_PATH}")
+        ALIAS_SEARCH_BLOCK=$(printf "# BEGIN ALIAS_SOURCE_BLOCK\n%s\n" "${FILE_PATH}")
 
         if [ -f "${_rc}" ]; then
-            if ! grep -qxF "${ALIAS_SOURCE_BLOCK}" "${_rc}"; then
+            if ! grep -qxF "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
                 echo "Updating ${_rc} for ${ADJUSTED_ID}..."
                 # Append the sourcing block to the RC file
-                printf "\n# Sourcing Custom Aliases\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
+                printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
             fi
         else
             # Notify if the rc file does not exist
             echo "Error: File ${_rc} does not exist."
             echo "Creating the ${_rc} file... although not sure if it will work."
             # Create the rc file
-            touch ${_rc}
+            touch "${_rc}"
             # Append the sourcing block to the newly created rc file
-            printf "\n# Sourcing Custom Aliases\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
+            printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
         fi
     fi
 }
