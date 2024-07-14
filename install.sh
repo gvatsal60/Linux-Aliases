@@ -67,6 +67,11 @@ updaterc() {
             # Append the sourcing block to the newly created rc file
             printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
         fi
+
+        if [ -f "${_rc}" ]; then
+            # shellcheck source=/dev/null
+            . "${_rc}"
+        fi
     fi
 }
 
