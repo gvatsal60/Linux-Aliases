@@ -106,14 +106,14 @@ Linux)
     . /etc/os-release
 
     # Get an adjusted ID independent of distro variants
-    if [ "${ID}" = "debian" ] || [ "${ID_LIKE}" = "debian" ]; then
+    if [ "${ID}" = "debian" ] || (echo "${ID_LIKE}" | grep -q "debian"); then
         ADJUSTED_ID="debian"
-    elif [ "${ID}" = "alpine" ]; then
-        ADJUSTED_ID="alpine"
-    elif [ "${ID}" = "arch" ] || [ "${ID_LIKE}" = "arch" ] || (echo "${ID_LIKE}" | grep -q "arch"); then
+    elif [ "${ID}" = "arch" ] || (echo "${ID_LIKE}" | grep -q "arch"); then
         ADJUSTED_ID="arch"
     elif [ "${ID}" = "rhel" ] || [ "${ID}" = "fedora" ] || [ "${ID}" = "mariner" ] || (echo "${ID_LIKE}" | grep -q "rhel") || (echo "${ID_LIKE}" | grep -q "fedora") || (echo "${ID_LIKE}" | grep -q "mariner"); then
         ADJUSTED_ID="rhel"
+    elif [ "${ID}" = "alpine" ]; then
+        ADJUSTED_ID="alpine"
     else
         echo "Error: Linux distro ${ID} not supported."
         exit 1
