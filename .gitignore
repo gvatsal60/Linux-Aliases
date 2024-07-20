@@ -1,16 +1,31 @@
-# Ignore compiled binaries (if any)
-*.out
-*.bin
+# Ignore temporary files #
+##########################
+*.tmp
 
-# Ignore logs and other generated files
+# Ignore any sensitive or environment-specific information #
+############################################################
+.env
+
+# Logs and databases #
+######################
 logs/
 *.log
 
-# Ignore temporary files
-*.tmp
-
-# Ignore any sensitive or environment-specific information
-.env
-
-# Ignore macOS specific files
+# OS generated files #
+######################
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor-specific files #
+########################
+*~
+*.swp
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
