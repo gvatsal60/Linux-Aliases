@@ -50,6 +50,7 @@ repos:
         entry: bashate
         language: python
         types: [shell]
+        args: ['--error', 'E006', '--ignore', 'E006']
   # Yamlfmt for formatting YAML files
   - repo: https://github.com/google/yamlfmt
     rev: "v0.13.0"

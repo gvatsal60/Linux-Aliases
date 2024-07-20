@@ -1,0 +1,24 @@
+name: Test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        baseImage: ["ubuntu:focal", "ubuntu:jammy", "debian:11", "debian:12", "mcr.microsoft.com/devcontainers/base:ubuntu", "mcr.microsoft.com/devcontainers/base:debian", "mcr.microsoft.com/devcontainers/base:noble", "alpine:latest", "archlinux:lagtest", "fedora:latest", "amazonlinux:latest", "oraclelinux:latest"]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Run Tests
+        run: |
+          ./test/test.sh
+  macos-test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Run Tests
+        run: |
+          ./test/test.sh
