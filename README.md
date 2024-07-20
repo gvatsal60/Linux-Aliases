@@ -27,6 +27,10 @@ experience by providing a collection of handy aliases. These aliases serve
 as shortcuts for frequently used or complex commands, allowing you to
 streamline your workflow and boost your productivity.
 
+## Requirements
+
+### Ensure you have either curl or wget installed on your system
+
 ## Usage
 
 To start using these aliases, follow these simple steps:
