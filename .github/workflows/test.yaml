@@ -14,3 +14,11 @@ jobs:
       - name: Run Tests
         run: |
           ./test/test.sh
+  macos-test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Run Tests
+        run: |
+          ./test/test.sh
