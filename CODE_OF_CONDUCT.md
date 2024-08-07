@@ -15,9 +15,9 @@ to take appropriate and fair corrective action in response to any instances of u
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting
-the project team at [contact email]. All complaints will be reviewed and investigated promptly and fairly.
+the project team at [Telegram](https://t.me/gvatsal60). All complaints will be reviewed and investigated promptly and fairly.
 
 ## Attribution
 
-This [Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html)
+This [Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct)
 is adapted from the Contributor Covenant, version 2.0.
