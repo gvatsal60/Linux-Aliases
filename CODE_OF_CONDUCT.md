@@ -15,7 +15,7 @@ to take appropriate and fair corrective action in response to any instances of u
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting
-the project team at [Telegram](https://t.me/gvatsal60). All complaints will be reviewed and investigated promptly and fairly.
+the project team at [Github Issues](https://github.com/gvatsal60/Linux-Aliases/issues). All complaints will be reviewed and investigated promptly and fairly.
 
 ## Attribution
 
