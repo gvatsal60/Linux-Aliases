@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://img.shields.io/github/license/gvatsal60/Linux-Aliases)
 [![build status](https://github.com/gvatsal60/Linux-Aliases/actions/workflows/ShellCheck.yaml/badge.svg)](https://github.com/gvatsal60/Linux-Aliases/actions/workflows/ShellCheck.yaml)
-[![Test](https://github.com/gvatsal60/Linux-Aliases/actions/workflows/test.yaml/badge.svg)](https://github.com/gvatsal60/Linux-Aliases/actions/workflows/test.yaml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/gvatsal60/Linux-Aliases/master.svg)](https://results.pre-commit.ci/latest/github/gvatsal60/Linux-Aliases/HEAD)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/gvatsal60/Linux-Aliases/graphs/commit-activity)
 ![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/Linux-Aliases)
