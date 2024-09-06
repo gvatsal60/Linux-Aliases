@@ -30,7 +30,7 @@ repos:
       - id: mixed-line-ending
       - id: name-tests-test
       - id: pretty-format-json
-        args: [--autofix, --no-ensure-ascii, --no-sort-keys]
+        args: [--autofix]
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   # ShellCheck hook for linting shell scripts

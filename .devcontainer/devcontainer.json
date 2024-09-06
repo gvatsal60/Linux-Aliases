@@ -9,14 +9,19 @@
         "esbenp.prettier-vscode",
         "Gruntfuggly.todo-tree",
         "DavidAnson.vscode-markdownlint",
-        "MindpathTechnologyLimited.code-error-lens",
         "gurumukhi.selected-lines-count",
         "bradzacher.vscode-copy-filename",
         "PKief.material-icon-theme",
         "timonwong.shellcheck",
-        "foxundermoon.shell-format"
+        "foxundermoon.shell-format",
+        "usernamehw.errorlens",
+        "mads-hartmann.bash-ide-vscode"
       ],
       "settings": {
+        "[shellscript]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format",
+          "files.eol": "\n"
+        },
         "editor.bracketPairColorization.enabled": true,
         "editor.comments.insertSpace": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
