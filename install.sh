@@ -1,32 +1,32 @@
 #!/bin/sh
 
-##########################################################################################
+###################################################################################################
 # File: install.sh
-# Author: Vatsal Gupta
+# Author: [Vatsal Gupta (gvatsal60)]
 # Date: 12-Jul-2024
 # Description: Setup of custom aliases on a Linux system by downloading a
 #              predefined .aliases.sh file from a GitHub repository and
 #              integrating it into the user's shell configuration
 #              files (~/.bashrc, ~/.zshrc, or ~/.profile)
-##########################################################################################
+###################################################################################################
 
-##########################################################################################
+###################################################################################################
 # License
-##########################################################################################
+###################################################################################################
 # This script is licensed under the Apache 2.0 License.
 
-##########################################################################################
+###################################################################################################
 # Global Variables & Constants
-##########################################################################################
+###################################################################################################
 readonly FILE_NAME=".aliases.sh"
 readonly FILE_PATH="${HOME}/${FILE_NAME}"
 readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
 
 UPDATE_RC="${UPDATE_RC:-"true"}"
 
-##########################################################################################
+###################################################################################################
 # Functions
-##########################################################################################
+###################################################################################################
 # Function: updaterc
 # Description: Update shell configuration files
 updaterc() {
@@ -56,7 +56,7 @@ updaterc() {
             if ! grep -qxF "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
                 echo "Updating ${_rc} for ${ADJUSTED_ID}..."
                 # Append the sourcing block to the RC file
-                printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
+                printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
             fi
         else
             # Notify if the rc file does not exist
@@ -65,7 +65,7 @@ updaterc() {
             # Create the rc file
             touch "${_rc}"
             # Append the sourcing block to the newly created rc file
-            printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >> "${_rc}"
+            printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
         fi
 
         if [ -f "${_rc}" ]; then
@@ -80,19 +80,19 @@ updaterc() {
 dw_file() {
     # Check if curl is available
     if command -v curl >/dev/null 2>&1; then
-        curl -fsSL -o "${HOME}/${FILE_NAME}" ${FILE_LINK}
+        curl -fsSL -o "${FILE_PATH}" ${FILE_LINK}
     # Check if wget is available
     elif command -v wget >/dev/null 2>&1; then
-        wget -O "${HOME}/${FILE_NAME}" ${FILE_LINK}
+        wget -O "${FILE_PATH}" ${FILE_LINK}
     else
         echo "Error: Either install wget or curl"
         exit 1
     fi
 }
 
-##########################################################################################
+###################################################################################################
 # Main Script
-##########################################################################################
+###################################################################################################
 
 OS=$(uname)
 
@@ -125,18 +125,18 @@ Linux)
     ;;
 esac
 
-if [ -f "${HOME}/${FILE_NAME}" ]; then
-    echo "File already exists: ${HOME}/${FILE_NAME}"
+if [ -f "${FILE_PATH}" ]; then
+    echo "File already exists: ${FILE_PATH}"
     echo "Do you want to replace it (default: y)? [y/n]: "
     read -r rp_conf
     rp_conf="${rp_conf:-y}"
     if [ "${rp_conf}" = "y" ]; then
         # Replace the existing file
-        echo "Replacing ${HOME}/${FILE_NAME}..."
+        echo "Replacing ${FILE_PATH}..."
         dw_file
         updaterc
     else
-        echo "Keeping existing file: ${HOME}/${FILE_NAME}"
+        echo "Keeping existing file: ${FILE_PATH}"
     fi
 else
     dw_file

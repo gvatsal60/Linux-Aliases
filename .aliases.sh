@@ -1,9 +1,20 @@
 #!/bin/sh
+
 ###################################################################################################
-# Aliases Script
-# Author: [Vatsal Gupta]
+# File: .aliases.sh
+# Author: [Vatsal Gupta (gvatsal60)]
+# Date: 12-Jul-2024
 # Description: This script defines convenient aliases for common commands.
 # Usage: Source this script in your shell profile (e.g., ~/.bashrc, ~/.zshrc).
+###################################################################################################
+
+###################################################################################################
+# License
+###################################################################################################
+# This script is licensed under the Apache 2.0 License.
+
+###################################################################################################
+# Global Variables & Constants
 ###################################################################################################
 
 ###################################################################################################
@@ -47,7 +58,7 @@ parse_git_branch() {
 #   Make sure you are on the branch where you want to squash commits before running this command.
 #
 gsquash() {
-    git rebase -i HEAD~"$1"
+    git rebase -i HEAD~"${1}"
 }
 
 ###################################################################################################
@@ -75,7 +86,7 @@ alias ...='cd ../..' # Go up two directories
 ###################################################################################################
 alias cl='clear && clear'                                                                                   # Clear the screen
 alias h='history'                                                                                           # Show command history
-alias j='jobs # List active jobs'                                                                           # List active jobs
+alias j='jobs'                                                                                              # List active jobs
 alias duh='du -h'                                                                                           # View disk usage of current directory and its subdirectories in human-readable format
 alias du1='du -h --max-depth=1'                                                                             # View disk usage of each file and directory in current directory in human-readable format
 alias psa='ps aux'                                                                                          # Show running processes
@@ -146,10 +157,12 @@ alias dcrmv='docker-compose rm -v'   # Remove stopped service containers and ass
 alias dps='docker ps -a'                    # List all containers, both running and stopped
 alias drm='docker container rm'             # Remove one or more containers
 alias dimg='docker image'                   # Docker image commands
+alias drimg='docker image rm'               # Remove one or more images
 alias dimgs='docker image ls'               # Docker image list command
 alias dvol='docker volume'                  # Docker volume commands
 alias dkall='docker kill $(docker ps -qa)'  # Kill all running containers
 alias drall='docker rm -f $(docker ps -qa)' # Remove all containers
+alias dcl='docker system prune -f'          # Prune all unused containers, volumes and images etc.
 
 ###################################################################################################
 # Terraform
