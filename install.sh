@@ -24,6 +24,9 @@ readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HE
 
 UPDATE_RC="${UPDATE_RC:-"true"}"
 
+# Exit the script immediately if any command fails
+set -e
+
 ###################################################################################################
 # Functions
 ###################################################################################################

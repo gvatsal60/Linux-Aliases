@@ -20,6 +20,7 @@
       "settings": {
         "[shellscript]": {
           "editor.defaultFormatter": "foxundermoon.shell-format",
+          "editor.tabSize": 4,
           "files.eol": "\n"
         },
         "editor.bracketPairColorization.enabled": true,
