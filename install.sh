@@ -21,9 +21,6 @@
 # Exit the script immediately if any command fails
 set -e
 
-# Ensure apt is in non-interactive to avoid prompts
-export DEBIAN_FRONTEND=noninteractive
-
 readonly FILE_NAME=".aliases.sh"
 readonly FILE_PATH="${HOME}/${FILE_NAME}"
 readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
