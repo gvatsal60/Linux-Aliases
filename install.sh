@@ -60,7 +60,7 @@ updaterc() {
 
     # Check if ".aliases.sh" is already sourced, if not then append it
     if [ -f "${_rc}" ]; then
-        if ! grep -qsE --no-ignore-case "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
+        if ! grep -qsE "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
             echo "Updating ${_rc} for ${ADJUSTED_ID}..."
             # Append the sourcing block to the RC file
             printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
@@ -73,11 +73,6 @@ updaterc() {
         touch "${_rc}"
         # Append the sourcing block to the newly created rc file
         printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
-    fi
-
-    if [ -f "${_rc}" ]; then
-        # shellcheck source=/dev/null
-        . "${_rc}"
     fi
 }
 
