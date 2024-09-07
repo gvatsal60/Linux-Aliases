@@ -25,7 +25,7 @@ readonly FILE_NAME=".aliases.sh"
 readonly FILE_PATH="${HOME}/${FILE_NAME}"
 readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
 
-UPDATE_RC="${UPDATE_RC:-"true"}"
+readonly ALIAS_SEARCH_BLOCK="\. \"${FILE_PATH}\""
 
 ALIAS_SOURCE_BLOCK=$(
     cat <<EOF
@@ -35,8 +35,6 @@ fi
 EOF
 )
 
-ALIAS_SEARCH_BLOCK="\. \"${FILE_PATH}\""
-
 ###################################################################################################
 # Functions
 ###################################################################################################
@@ -44,44 +42,42 @@ ALIAS_SEARCH_BLOCK="\. \"${FILE_PATH}\""
 # Description: Update shell configuration files
 updaterc() {
     _rc=""
-    if [ "${UPDATE_RC}" = "true" ]; then
-        case ${ADJUSTED_ID} in
-        debian | rhel)
-            _rc="${HOME}/.bashrc"
-            ;;
-        alpine | arch)
-            _rc="${HOME}/.profile"
-            ;;
-        darwin)
-            _rc="${HOME}/.zshrc"
-            ;;
-        *)
-            echo "Error: Unsupported or unrecognized os distribution ${ADJUSTED_ID}"
-            exit 1
-            ;;
-        esac
+    case ${ADJUSTED_ID} in
+    debian | rhel)
+        _rc="${HOME}/.bashrc"
+        ;;
+    alpine | arch)
+        _rc="${HOME}/.profile"
+        ;;
+    darwin)
+        _rc="${HOME}/.zshrc"
+        ;;
+    *)
+        echo "Error: Unsupported or unrecognized os distribution ${ADJUSTED_ID}"
+        exit 1
+        ;;
+    esac
 
-        # Check if ".aliases.sh" is already sourced, if not then append it
-        if [ -f "${_rc}" ]; then
-            if ! grep -qsE --no-ignore-case "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
-                echo "Updating ${_rc} for ${ADJUSTED_ID}..."
-                # Append the sourcing block to the RC file
-                printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
-            fi
-        else
-            # Notify if the rc file does not exist
-            echo "Error: File ${_rc} does not exist."
-            echo "Creating the ${_rc} file... although not sure if it will work."
-            # Create the rc file
-            touch "${_rc}"
-            # Append the sourcing block to the newly created rc file
+    # Check if ".aliases.sh" is already sourced, if not then append it
+    if [ -f "${_rc}" ]; then
+        if ! grep -qsE --no-ignore-case "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
+            echo "Updating ${_rc} for ${ADJUSTED_ID}..."
+            # Append the sourcing block to the RC file
             printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
         fi
+    else
+        # Notify if the rc file does not exist
+        echo "Error: File ${_rc} does not exist."
+        echo "Creating the ${_rc} file... although not sure if it will work."
+        # Create the rc file
+        touch "${_rc}"
+        # Append the sourcing block to the newly created rc file
+        printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
+    fi
 
-        if [ -f "${_rc}" ]; then
-            # shellcheck source=/dev/null
-            . "${_rc}"
-        fi
+    if [ -f "${_rc}" ]; then
+        # shellcheck source=/dev/null
+        . "${_rc}"
     fi
 }
 
@@ -139,7 +135,7 @@ if [ -f "${FILE_PATH}" ]; then
     echo "File already exists: ${FILE_PATH}"
     echo "Do you want to replace it (default: y)? [y/n]: "
     read -r rp_conf
-    rp_conf="${rp_conf:-y}"
+    rp_conf="${rp_conf:-"y"}"
     if [ "${rp_conf}" = "y" ]; then
         # Replace the existing file
         echo "Replacing ${FILE_PATH}..."
