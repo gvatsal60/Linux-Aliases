@@ -131,20 +131,33 @@ Linux)
     ;;
 esac
 
-if [ -f "${FILE_PATH}" ]; then
-    echo "File already exists: ${FILE_PATH}"
-    echo "Do you want to replace it (default: y)? [y/n]: "
-    read -r rp_conf
-    rp_conf="${rp_conf:-"y"}"
-    if [ "${rp_conf}" = "y" ]; then
-        # Replace the existing file
-        echo "Replacing ${FILE_PATH}..."
-        dw_file
-        updaterc
-    else
-        echo "Keeping existing file: ${FILE_PATH}"
+# Default behavior
+_action="y"
+
+# Check if the script is running in interactive mode
+if [ -t 0 ]; then
+    # Interactive mode
+    if [ -f "${FILE_PATH}" ]; then
+        echo "File already exists: ${FILE_PATH}"
+        echo "Do you want to replace it (default: y)? [y/n]: "
+        # Read input, use default value if no input is given
+        read -r _rp_conf
+        _rp_conf="${_rp_conf:-${_action}}"
+        _action="${_rp_conf}"
     fi
 else
+    # Non-interactive mode
+    if [ -f "${FILE_PATH}" ]; then
+        echo "File already exists: ${FILE_PATH}"
+    fi
+    echo "Updating file as non-interactive mode defaults to ${_action}."
+fi
+
+if [ "${_action}" = "y" ]; then
+    # Download file
     dw_file
+    # Update rc file
     updaterc
+else
+    echo "Keeping existing file: ${FILE_PATH}"
 fi
