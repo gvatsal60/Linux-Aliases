@@ -18,14 +18,27 @@
 ###################################################################################################
 # Global Variables & Constants
 ###################################################################################################
+# Exit the script immediately if any command fails
+set -e
+
+# Ensure apt is in non-interactive to avoid prompts
+export DEBIAN_FRONTEND=noninteractive
+
 readonly FILE_NAME=".aliases.sh"
 readonly FILE_PATH="${HOME}/${FILE_NAME}"
 readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
 
 UPDATE_RC="${UPDATE_RC:-"true"}"
 
-# Exit the script immediately if any command fails
-set -e
+ALIAS_SOURCE_BLOCK=$(
+    cat <<EOF
+if [ -f "${FILE_PATH}" ]; then
+ . "${FILE_PATH}"
+fi
+EOF
+)
+
+ALIAS_SEARCH_BLOCK="\. \"${FILE_PATH}\""
 
 ###################################################################################################
 # Functions
@@ -51,12 +64,9 @@ updaterc() {
             ;;
         esac
 
-        # Check if "~.aliases.sh" is already sourced, if not then append it
-        ALIAS_SOURCE_BLOCK=$(printf "# BEGIN ALIAS_SOURCE_BLOCK\nif [ -f \"%s\" ]; then\n . \"%s\"\nfi\n# END ALIAS_SOURCE_BLOCK\n" "${FILE_PATH}" "${FILE_PATH}")
-        ALIAS_SEARCH_BLOCK=$(printf "# BEGIN ALIAS_SOURCE_BLOCK\n%s\n" "${FILE_PATH}")
-
+        # Check if ".aliases.sh" is already sourced, if not then append it
         if [ -f "${_rc}" ]; then
-            if ! grep -qxF "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
+            if ! grep -qsE --no-ignore-case "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
                 echo "Updating ${_rc} for ${ADJUSTED_ID}..."
                 # Append the sourcing block to the RC file
                 printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
