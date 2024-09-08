@@ -23,12 +23,14 @@ set -e
 
 readonly FILE_NAME=".aliases.sh"
 readonly FILE_PATH="${HOME}/${FILE_NAME}"
-readonly FILE_LINK="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
+readonly ALIAS_SOURCE_URL="https://raw.githubusercontent.com/gvatsal60/Linux-Aliases/HEAD/${FILE_NAME}"
 
-readonly ALIAS_SEARCH_BLOCK="\. \"${FILE_PATH}\""
+readonly ALIAS_SEARCH_STR="\. \"${FILE_PATH}\""
 
-ALIAS_SOURCE_BLOCK=$(
+ALIAS_SOURCE_STR=$(
     cat <<EOF
+
+# Common and useful aliases
 if [ -f "${FILE_PATH}" ]; then
  . "${FILE_PATH}"
 fi
@@ -38,6 +40,13 @@ EOF
 ###################################################################################################
 # Functions
 ###################################################################################################
+
+# Function: println
+# Description: Prints each argument on a new line, suppressing any error messages.
+println() {
+    command printf %s\\n "$*" 2>/dev/null
+}
+
 # Function: updaterc
 # Description: Update shell configuration files
 updaterc() {
@@ -53,27 +62,33 @@ updaterc() {
         _rc="${HOME}/.zshrc"
         ;;
     *)
-        echo "Error: Unsupported or unrecognized os distribution ${ADJUSTED_ID}"
+        println >&2 "Error: Unsupported or unrecognized OS distribution ${ADJUSTED_ID}"
         exit 1
         ;;
     esac
 
     # Check if ".aliases.sh" is already sourced, if not then append it
     if [ -f "${_rc}" ]; then
-        if ! grep -qsE "${ALIAS_SEARCH_BLOCK}" "${_rc}"; then
-            echo "Updating ${_rc} for ${ADJUSTED_ID}..."
+        if ! grep -qsE "${ALIAS_SEARCH_STR}" "${_rc}"; then
+            println "=> Updating ${_rc} for ${ADJUSTED_ID}..."
             # Append the sourcing block to the RC file
-            printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
+            println "${ALIAS_SOURCE_STR}" >>"${_rc}"
         fi
     else
         # Notify if the rc file does not exist
-        echo "Error: File ${_rc} does not exist."
-        echo "Creating the ${_rc} file... although not sure if it will work."
+        println "=> Profile not found. ${_rc} does not exist."
+        println "=> Creating the file ${_rc}... Please note that this may not work as expected."
         # Create the rc file
         touch "${_rc}"
         # Append the sourcing block to the newly created rc file
-        printf "\n%s" "${ALIAS_SOURCE_BLOCK}" >>"${_rc}"
+        println "${ALIAS_SOURCE_STR}" >>"${_rc}"
     fi
+
+    println ""
+    println "=> Close and reopen your terminal to start using aliases"
+    println "   OR"
+    println "=> Run the following to use it now:"
+    println ">>> source ${_rc} # This loads aliases"
 }
 
 # Function: dw_file
@@ -81,12 +96,12 @@ updaterc() {
 dw_file() {
     # Check if curl is available
     if command -v curl >/dev/null 2>&1; then
-        curl -fsSL -o "${FILE_PATH}" ${FILE_LINK}
+        curl -fsSL -o "${FILE_PATH}" ${ALIAS_SOURCE_URL}
     # Check if wget is available
     elif command -v wget >/dev/null 2>&1; then
-        wget -O "${FILE_PATH}" ${FILE_LINK}
+        wget -O "${FILE_PATH}" ${ALIAS_SOURCE_URL}
     else
-        echo "Error: Either install wget or curl"
+        println >&2 "Error: Either install wget or curl"
         exit 1
     fi
 }
@@ -116,12 +131,12 @@ Linux)
     elif [ "${ID}" = "alpine" ]; then
         ADJUSTED_ID="alpine"
     else
-        echo "Error: Linux distro ${ID} not supported."
+        println >&2 "Error: Linux distro ${ID} not supported."
         exit 1
     fi
     ;;
 *)
-    echo "Error: Unsupported or unrecognized os distribution ${ADJUSTED_ID}"
+    println >&2 "Error: Unsupported or unrecognized OS distribution ${ADJUSTED_ID}"
     exit 1
     ;;
 esac
@@ -129,30 +144,24 @@ esac
 # Default behavior
 _action="y"
 
-# Check if the script is running in interactive mode
-if [ -t 0 ]; then
-    # Interactive mode
-    if [ -f "${FILE_PATH}" ]; then
-        echo "File already exists: ${FILE_PATH}"
-        echo "Do you want to replace it (default: y)? [y/n]: "
-        # Read input, use default value if no input is given
-        read -r _rp_conf
-        _rp_conf="${_rp_conf:-${_action}}"
-        _action="${_rp_conf}"
-    fi
-else
-    # Non-interactive mode
-    if [ -f "${FILE_PATH}" ]; then
-        echo "File already exists: ${FILE_PATH}"
-    fi
-    echo "Updating file as non-interactive mode defaults to ${_action}."
+if [ -f "${FILE_PATH}" ]; then
+    println "=> File already exists: ${FILE_PATH}"
+    println "=> Do you want to replace it (default: y)? [y/n]: "
+    # Read input, use default value if no input is given
+    read -r _rp_conf
+    _rp_conf="${_rp_conf:-${_action}}"
+    _action="${_rp_conf}"
 fi
 
 if [ "${_action}" = "y" ]; then
-    # Download file
+    println "=> Updating the file: ${FILE_PATH}"
+    # Download the necessary file from the specified source
     dw_file
-    # Update rc file
+    # Update the configuration file with the latest changes
     updaterc
+elif [ "${_action}" = "n" ]; then
+    println "=> Keeping existing file: ${FILE_PATH}"
 else
-    echo "Keeping existing file: ${FILE_PATH}"
+    println >&2 "Error: Invalid input. Please check your entry and try again."
+    exit 1
 fi
