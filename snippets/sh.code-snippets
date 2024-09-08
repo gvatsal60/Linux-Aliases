@@ -38,6 +38,15 @@
     "description": "Shell script file template",
     "isFileTemplate": true
   },
+  "Functions Header": {
+    "scope": "shellscript",
+    "prefix": "fhead",
+    "body": [
+      "# Function: ${1}",
+      "# Description: Brief description of the function purpose.",
+    ],
+    "description": "Quickly insert a function header"
+  },
   /***************************************************************************************
    * Debugging
    **************************************************************************************/
