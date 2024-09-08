@@ -144,13 +144,17 @@ esac
 # Default behavior
 _action="y"
 
-if [ -f "${FILE_PATH}" ]; then
-    println "=> File already exists: ${FILE_PATH}"
-    println "=> Do you want to replace it (default: y)? [y/n]: "
-    # Read input, use default value if no input is given
-    read -r _rp_conf
-    _rp_conf="${_rp_conf:-${_action}}"
-    _action="${_rp_conf}"
+# Check if the script is running in interactive mode, for non-interactive mode `_action` defaults to 'y'
+if [ -t 0 ]; then
+    # Interactive mode
+    if [ -f "${FILE_PATH}" ]; then
+        println "=> File already exists: ${FILE_PATH}"
+        println "=> Do you want to replace it (default: y)? [y/n]: "
+        # Read input, use default value if no input is given
+        read -r _rp_conf
+        _rp_conf="${_rp_conf:-${_action}}"
+        _action="${_rp_conf}"
+    fi
 fi
 
 if [ "${_action}" = "y" ]; then
