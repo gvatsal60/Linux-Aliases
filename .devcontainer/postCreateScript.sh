@@ -44,4 +44,5 @@ if command -v curl >/dev/null 2>&1; then
     curl -fsSL ${ALIAS_FILE_LINK} | sh
 else
     echo "Error: curl is not installed. Unable to use Linux aliases"
+    exit 1
 fi
