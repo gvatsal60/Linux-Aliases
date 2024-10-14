@@ -5,17 +5,18 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "streetsidesoftware.code-spell-checker",
-        "esbenp.prettier-vscode",
-        "Gruntfuggly.todo-tree",
         "DavidAnson.vscode-markdownlint",
-        "gurumukhi.selected-lines-count",
-        "bradzacher.vscode-copy-filename",
+        "Gruntfuggly.todo-tree",
         "PKief.material-icon-theme",
-        "timonwong.shellcheck",
+        "Tyriar.sort-lines",
+        "bradzacher.vscode-copy-filename",
+        "esbenp.prettier-vscode",
         "foxundermoon.shell-format",
-        "usernamehw.errorlens",
-        "mads-hartmann.bash-ide-vscode"
+        "gurumukhi.selected-lines-count",
+        "mads-hartmann.bash-ide-vscode",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "usernamehw.errorlens"
       ],
       "settings": {
         "[shellscript]": {
@@ -59,9 +60,9 @@
   "features": {
     "ghcr.io/gvatsal60/dev-container-features/pre-commit": {}
   },
-  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "image": "mcr.microsoft.com/devcontainers/base:noble",
   "mounts": [
-    "source=${localWorkspaceFolder}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind,consistency=cached,readonly"
+    "source=${containerWorkspaceFolder}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind,consistency=cached,readonly"
   ],
   "postCreateCommand": "chmod +x ${containerWorkspaceFolder}/.devcontainer/postCreateScript.sh && ${containerWorkspaceFolder}/.devcontainer/postCreateScript.sh",
   "runArgs": [
