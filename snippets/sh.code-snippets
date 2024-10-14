@@ -40,7 +40,7 @@
   },
   "Functions Header": {
     "scope": "shellscript",
-    "prefix": "fhead",
+    "prefix": "fheader",
     "body": [
       "# Function: ${1}",
       "# Description: Brief description of the function purpose.",
