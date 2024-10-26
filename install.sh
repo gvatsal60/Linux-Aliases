@@ -42,14 +42,22 @@ EOF
 ###################################################################################################
 
 # Function: println
-# Description: Prints each argument on a new line, suppressing any error messages.
+# Description: Prints a message to the console, followed by a newline.
+# Usage: println "Your message here"
 println() {
-    command printf %s\\n "$*" 2>/dev/null
+    printf "\n%s\n" "$*" 2>/dev/null
 }
 
-# Function: updaterc
+# Function: print_err
+# Description: Prints an error message to the console, followed by a newline.
+# Usage: print_err "Your error message here"
+print_err() {
+    printf "\n%s\n" "$*" >&2
+}
+
+# Function: update_rc
 # Description: Update shell configuration files
-updaterc() {
+update_rc() {
     _rc=""
     case ${ADJUSTED_ID} in
     debian | rhel)
@@ -62,7 +70,7 @@ updaterc() {
         _rc="${HOME}/.zshrc"
         ;;
     *)
-        println >&2 "Error: Unsupported or unrecognized OS distribution ${ADJUSTED_ID}"
+        print_err "Error: Unsupported or unrecognized OS distribution ${ADJUSTED_ID}"
         exit 1
         ;;
     esac
@@ -101,7 +109,7 @@ dw_file() {
     elif command -v wget >/dev/null 2>&1; then
         wget -O "${FILE_PATH}" ${ALIAS_SOURCE_URL}
     else
-        println >&2 "Error: Either install wget or curl"
+        print_err "Error: Either install wget or curl"
         exit 1
     fi
 }
@@ -131,12 +139,12 @@ Linux)
     elif [ "${ID}" = "alpine" ]; then
         ADJUSTED_ID="alpine"
     else
-        println >&2 "Error: Linux distro ${ID} not supported."
+        print_err "Error: Linux distro ${ID} not supported."
         exit 1
     fi
     ;;
 *)
-    println >&2 "Error: Unsupported or unrecognized OS distribution ${ADJUSTED_ID}"
+    print_err "Error: Unsupported or unrecognized OS distribution ${ADJUSTED_ID}"
     exit 1
     ;;
 esac
@@ -162,10 +170,10 @@ if [ "${_action}" = "y" ]; then
     # Download the necessary file from the specified source
     dw_file
     # Update the configuration file with the latest changes
-    updaterc
+    update_rc
 elif [ "${_action}" = "n" ]; then
     println "=> Keeping existing file: ${FILE_PATH}"
 else
-    println >&2 "Error: Invalid input. Please check your entry and try again."
+    print_err "Error: Invalid input. Please check your entry and try again."
     exit 1
 fi
