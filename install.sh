@@ -45,14 +45,14 @@ EOF
 # Description: Prints a message to the console, followed by a newline.
 # Usage: println "Your message here"
 println() {
-    printf "\n%s\n" "$*" 2>/dev/null
+    printf "%s\n" "$*" 2>/dev/null
 }
 
 # Function: print_err
 # Description: Prints an error message to the console, followed by a newline.
 # Usage: print_err "Your error message here"
 print_err() {
-    printf "\n%s\n" "$*" >&2
+    printf "%s\n" "$*" >&2
 }
 
 # Function: update_rc
