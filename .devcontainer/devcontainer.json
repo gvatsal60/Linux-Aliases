@@ -1,7 +1,4 @@
 {
-  "capAdd": [
-    "SYS_PTRACE"
-  ],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -62,7 +59,7 @@
   },
   "image": "mcr.microsoft.com/devcontainers/base:noble",
   "mounts": [
-    "source=${containerWorkspaceFolder}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind,consistency=cached,readonly"
+    "source=${localWorkspaceFolder:-.}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind,consistency=cached,readonly"
   ],
   "postCreateCommand": "chmod +x ${containerWorkspaceFolder}/.devcontainer/postCreateScript.sh && ${containerWorkspaceFolder}/.devcontainer/postCreateScript.sh",
   "runArgs": [
