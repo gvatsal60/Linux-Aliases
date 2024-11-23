@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Markdown Lint
-        uses: DavidAnson/markdownlint-cli2-action@eb5ca3a
+        uses: DavidAnson/markdownlint-cli2-action@eb5ca3ab411449c66620fe7f1b3c9e10547144b0
         with:
           fix: true
           globs: |
