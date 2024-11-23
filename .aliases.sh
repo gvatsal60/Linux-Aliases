@@ -40,7 +40,7 @@
 #   - Redirects error output (if any) to /dev/null to maintain a clean output.
 #
 parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+    git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
 # Function: gsquash
