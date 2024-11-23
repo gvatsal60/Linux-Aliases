@@ -1,8 +1,7 @@
 name: Shell Format
 on:
   push:
-    - master
-    - main
+    branches: ["master"]
 permissions:
   contents: write # Grant write permission only for contents (commit/push)
 jobs:
