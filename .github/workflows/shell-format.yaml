@@ -41,7 +41,7 @@ jobs:
             BRANCH_NAME=${GITHUB_REF#refs/heads/}
 
             # Push the changes to the correct branch (if not in a PR, this defaults to the current branch)
-            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH_NAME}
+            git push -f https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH_NAME}
           )
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
