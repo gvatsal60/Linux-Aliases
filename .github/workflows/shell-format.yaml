@@ -22,15 +22,24 @@ jobs:
           sudo apt-get install shfmt -y
       - name: Format Shell Scripts
         run: |
-          find . -type f -name "*.sh" -exec shfmt -w {} \;
+          find . -type f -name "*.sh" -exec shfmt -w -i 4 {} \;
       - name: Commit and Push Changes
         run: |
+          # Check if there are any changes in the diff
           git diff --exit-code || (
+            # Configure git with the bot's user details
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+            # Stage the changes
             git add .
-            git commit -m "Format shell scripts with shfmt"
-            git push origin ${GITHUB_REF#refs/heads/}
+
+            # Commit changes if any are present
+            git commit -m "Format shell scripts with shfmt" || echo "No changes to commit"
+
+            # Push the changes to the correct branch
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${GITHUB_REF#refs/heads/}
           )
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
