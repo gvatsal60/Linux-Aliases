@@ -18,7 +18,9 @@
       "settings": {
         "[markdown]": {
           "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-          "editor.rulers": [80]
+          "editor.rulers": [
+            80
+          ]
         },
         "[shellscript]": {
           "editor.defaultFormatter": "foxundermoon.shell-format",

@@ -6,7 +6,7 @@ on:
     branches:
       - master
 permissions:
-  contents: write  # Grant write permission only for contents (commit/push)
+  contents: write # Grant write permission only for contents (commit/push)
 jobs:
   shell-format:
     name: Shell Format (shfmt)
@@ -34,4 +34,3 @@ jobs:
           )
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
