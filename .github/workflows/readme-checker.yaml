@@ -1,7 +1,8 @@
 name: Markdown Lint
 on:
-  push:
   pull_request:
+permissions:
+  contents: write # Grant write permission only for contents (commit/push)
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -9,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Markdown Lint
-        uses: DavidAnson/markdownlint-cli2-action@v18
+        uses: DavidAnson/markdownlint-cli2-action@eb5ca3a
         with:
           fix: true
           globs: |
