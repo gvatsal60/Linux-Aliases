@@ -58,7 +58,7 @@ parse_git_branch() {
 #   Make sure you are on the branch where you want to squash commits before running this command.
 #
 gsquash() {
-    git    rebase -i HEAD~"${1}"
+    git rebase -i HEAD~"${1}"
 }
 
 ###################################################################################################
