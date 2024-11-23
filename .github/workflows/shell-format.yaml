@@ -46,4 +46,4 @@ jobs:
             gh pr create --title "${COMMIT_MSG}" --body "This PR formats shell scripts with shfmt."
           )
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
