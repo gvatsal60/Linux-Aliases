@@ -31,14 +31,17 @@ jobs:
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+            # Get the branch name from the GitHub event (use the source branch of the PR)
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+
+            # Checkout the branch
+            git checkout ${BRANCH_NAME}
+
             # Stage the changes
             git add .
 
             # Commit changes if any are present
             git commit -m "Format shell scripts with shfmt" || echo "No changes to commit"
-
-            # Get the branch name from the GitHub event (use the source branch of the PR)
-            BRANCH_NAME=${GITHUB_REF#refs/heads/}
 
             # Push the changes to the correct branch (if not in a PR, this defaults to the current branch)
             git push -f https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH_NAME}
