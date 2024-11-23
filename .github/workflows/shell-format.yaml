@@ -37,8 +37,11 @@ jobs:
             # Commit changes if any are present
             git commit -m "Format shell scripts with shfmt" || echo "No changes to commit"
 
-            # Push the changes to the correct branch
-            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${GITHUB_REF#refs/heads/}
+            # Get the branch name from the GitHub event (use the source branch of the PR)
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+
+            # Push the changes to the correct branch (if not in a PR, this defaults to the current branch)
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH_NAME}
           )
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
