@@ -1,9 +1,6 @@
 name: Shell Format
 on:
-  push:
-    branches:
-      - master
-      - main
+  pull_request:
 permissions:
   contents: write # Grant write permission only for contents (commit/push)
 jobs:
@@ -21,6 +18,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
+      - name: Pull the Changes
+        run: |
+          git pull -r
       - name: Format Shell Scripts
         run: |
           find . -type f -name "*.sh" -exec shfmt -w -i 4 {} \;
