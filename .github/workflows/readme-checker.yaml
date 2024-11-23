@@ -1,7 +1,6 @@
 name: Markdown Lint
 on:
   pull_request:
-  push:
 permissions:
   contents: write # Grant write permission only for contents (commit/push)
 jobs:

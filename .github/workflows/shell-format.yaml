@@ -1,7 +1,8 @@
 name: Shell Format
 on:
-  pull_request:
   push:
+    - master
+    - main
 permissions:
   contents: write # Grant write permission only for contents (commit/push)
 jobs:
@@ -24,10 +25,16 @@ jobs:
           find . -type f -name "*.sh" -exec shfmt -w -i 4 {} \;
       - name: Commit and Push Changes
         run: |
+          BRANCH_NAME="fix/shfmt"
+          COMMIT_MSG="Format shell scripts with shfmt"
           git diff --exit-code || (
+            git checkout -b ${BRANCH_NAME}
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add .
-            git commit -m "Format shell scripts with shfmt"
-            git push -f
+            git commit -m ""
+            git push --set-upstream origin ${BRANCH_NAME}
+            gh pr create --title ${COMMIT_MSG}
           )
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
