@@ -18,15 +18,15 @@ Please follow these guidelines to ensure a smooth process.
 
 * **Indentation**: Use 4 spaces for indentation in all code files. Avoid using tabs.
 * **Line Length**: Limit lines to improve readability.
-* **Naming Conventions**: Use meaningful variable and function names.
-Variables should be written in lowercase with underscores separating words
-(e.g.,  `my_variable`), while function names should use lowercase
-with underscores (e.g.,  `my_function`).
+* **Naming Conventions**: Use meaningful variable and function names. Variables
+  should be written in lowercase with underscores separating words (e.g.,
+  `my_variable`), while function names should use lowercase with underscores
+  (e.g., `my_function`).
 
 ### Bash Scripts
 
-* **Indentation**: Use 4 spaces for indentation.
-Ensure consistent indentation throughout the script.
+* **Indentation**: Use 4 spaces for indentation. Ensure consistent indentation
+  throughout the script.
 * **POSIX Compliance**: Write scripts to be POSIX-compliant whenever
 possible to ensure compatibility across different Unix-like systems.
 Avoid using non-standard features or extensions specific to a particular shell.
