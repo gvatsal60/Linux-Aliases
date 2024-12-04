@@ -3,13 +3,12 @@
     "vscode": {
       "extensions": [
         "DavidAnson.vscode-markdownlint",
-        "Gruntfuggly.todo-tree",
+        "EditorConfig.EditorConfig",
         "PKief.material-icon-theme",
         "Tyriar.sort-lines",
         "bradzacher.vscode-copy-filename",
         "esbenp.prettier-vscode",
         "foxundermoon.shell-format",
-        "gurumukhi.selected-lines-count",
         "mads-hartmann.bash-ide-vscode",
         "marvhen.reflow-markdown",
         "streetsidesoftware.code-spell-checker",
@@ -61,10 +60,7 @@
       }
     }
   },
-  "features": {
-    "ghcr.io/gvatsal60/dev-container-features/pre-commit": {}
-  },
-  "image": "mcr.microsoft.com/devcontainers/base:noble",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:latest",
   "mounts": [
     "source=${localWorkspaceFolder}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind,consistency=cached"
   ],
