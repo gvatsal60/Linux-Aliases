@@ -53,7 +53,7 @@ repos:
         args: ['--error', 'E006', '--ignore', 'E006']
   # Yamlfmt for formatting YAML files
   - repo: https://github.com/google/yamlfmt
-    rev: "v0.17.1"
+    rev: "v0.17.2"
     hooks:
       - id: yamlfmt
   # Codespell for detecting common misspellings in code
