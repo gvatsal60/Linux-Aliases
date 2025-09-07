@@ -51,7 +51,7 @@
       }
     }
   },
-  "image": "mcr.microsoft.com/devcontainers/javascript-node",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
   "mounts": [
     "source=${localWorkspaceFolder}/snippets,target=${containerWorkspaceFolder}/.vscode,type=bind,consistency=cached"
   ],

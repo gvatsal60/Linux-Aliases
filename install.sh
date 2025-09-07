@@ -59,7 +59,7 @@ print_err() {
 # Description: Update shell configuration files
 update_rc() {
     _rc=""
-    case ${ADJUSTED_ID} in
+    case "${ADJUSTED_ID}" in
     debian | rhel)
         _rc="${HOME}/.bashrc"
         ;;
@@ -120,7 +120,7 @@ dw_file() {
 
 OS=$(uname)
 
-case ${OS} in
+case "${OS}" in
 Darwin)
     ADJUSTED_ID="darwin"
     ;;
