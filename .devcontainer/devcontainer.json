@@ -4,13 +4,10 @@
       "extensions": [
         "DavidAnson.vscode-markdownlint",
         "EditorConfig.EditorConfig",
-        "PKief.material-icon-theme",
         "Tyriar.sort-lines",
-        "bradzacher.vscode-copy-filename",
         "esbenp.prettier-vscode",
         "foxundermoon.shell-format",
         "mads-hartmann.bash-ide-vscode",
-        "marvhen.reflow-markdown",
         "streetsidesoftware.code-spell-checker",
         "timonwong.shellcheck",
         "usernamehw.errorlens"
@@ -35,7 +32,6 @@
         "editor.tabSize": 2,
         "editor.trimAutoWhitespace": true,
         "explorer.confirmDelete": false,
-        "extensions.autoUpdate": true,
         "extensions.ignoreRecommendations": true,
         "files.associations": {
           "*.code-snippets": "jsonc"
@@ -51,14 +47,9 @@
           "**/bower_components": true,
           "**/node_modules": true
         },
-        "windows.title": "${folderPath}",
-        "workbench.iconTheme": "material-icon-theme",
         "workbench.startupEditor": "none"
       }
     }
-  },
-  "features": {
-    "ghcr.io/gvatsal60/dev-container-features/pre-commit": {}
   },
   "image": "mcr.microsoft.com/devcontainers/javascript-node",
   "mounts": [
