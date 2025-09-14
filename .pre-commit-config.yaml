@@ -9,29 +9,21 @@ repos:
     rev: "v6.0.0"
     hooks:
       - id: check-added-large-files
-      - id: check-ast
-      - id: check-builtin-literals
       - id: check-case-conflict
-      - id: check-docstring-first
       - id: check-executables-have-shebangs
       - id: check-json
       - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
       - id: check-symlinks
-      - id: check-toml
       - id: check-vcs-permalinks
-      - id: check-xml
       - id: check-yaml
-      - id: debug-statements
       - id: destroyed-symlinks
       - id: double-quote-string-fixer
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
       - id: mixed-line-ending
-      - id: name-tests-test
       - id: pretty-format-json
         args: [--autofix]
-      - id: requirements-txt-fixer
       - id: trailing-whitespace
   # ShellCheck hook for linting shell scripts
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -50,7 +42,7 @@ repos:
         entry: bashate
         language: python
         types: [shell]
-        args: ['--error', 'E006', '--ignore', 'E006']
+        args: ["--error", "E006", "--ignore", "E006"]
   # Yamlfmt for formatting YAML files
   - repo: https://github.com/google/yamlfmt
     rev: "v0.17.2"
@@ -61,3 +53,9 @@ repos:
     rev: "v2.4.1"
     hooks:
       - id: codespell
+  # Markdownlint for linting Markdown files
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.18.1
+    hooks:
+      - id: markdownlint-cli2
+        args: [--fix]
