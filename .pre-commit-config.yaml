@@ -55,7 +55,7 @@ repos:
       - id: codespell
   # Markdownlint for linting Markdown files
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.18.1
+    rev: v0.19.0
     hooks:
       - id: markdownlint-cli2
         args: [--fix]
