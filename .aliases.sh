@@ -130,6 +130,7 @@ alias gcm='git commit'                                   # Committing changes
 alias gd='git diff'                                      # Showing differences
 alias gb='git branch'                                    # Managing branches
 alias ga='git add'                                       # Staging changes
+alias glog='git log'                                     # Commit logs
 alias glpo='git log --pretty=oneline'                    # Concise commit history
 
 # Delete all local branches except "master" and "main" with confirmation
