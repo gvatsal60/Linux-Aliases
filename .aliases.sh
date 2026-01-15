@@ -163,7 +163,7 @@ alias dimgs='docker image ls'                                 # Docker image lis
 alias dvol='docker volume'                                    # Docker volume commands
 alias dkall='docker kill $(docker ps -qa)'                    # Kill all running containers
 alias drall='docker rm -f $(docker ps -qa)'                   # Remove all containers
-alias dcl='docker system prune -f && docker builder prune -f' # Prune all unused containers, volumes, images, and builder cache
+alias dcl='docker system prune -f && docker builder prune -f' # Prune unused containers, networks, dangling images, and builder cache
 
 ###################################################################################################
 # Terraform
