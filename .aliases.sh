@@ -155,15 +155,15 @@ alias dcstart='docker-compose start' # Start services
 alias dcrmv='docker-compose rm -v'   # Remove stopped service containers and associated volumes
 
 # Docker Container and Image Management
-alias dps='docker ps -a'                                        # List all containers, both running and stopped
-alias drm='docker container rm'                                 # Remove one or more containers
-alias dimg='docker image'                                       # Docker image commands
-alias drimg='docker image rm'                                   # Remove one or more images
-alias dimgs='docker image ls'                                   # Docker image list command
-alias dvol='docker volume'                                      # Docker volume commands
-alias dkall='docker kill $(docker ps -qa)'                      # Kill all running containers
-alias drall='docker rm -f $(docker ps -qa)'                     # Remove all containers
-alias dcl='docker system prune -af && docker builder prune -af' # Prune all unused containers, volumes, images, and builder cache
+alias dps='docker ps -a'                                      # List all containers, both running and stopped
+alias drm='docker container rm'                               # Remove one or more containers
+alias dimg='docker image'                                     # Docker image commands
+alias drimg='docker image rm'                                 # Remove one or more images
+alias dimgs='docker image ls'                                 # Docker image list command
+alias dvol='docker volume'                                    # Docker volume commands
+alias dkall='docker kill $(docker ps -qa)'                    # Kill all running containers
+alias drall='docker rm -f $(docker ps -qa)'                   # Remove all containers
+alias dcl='docker system prune -f && docker builder prune -f' # Prune unused containers, networks, dangling images, and builder cache
 
 ###################################################################################################
 # Terraform
