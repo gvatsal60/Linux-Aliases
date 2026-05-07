@@ -17,6 +17,7 @@ used commands into easily memorable shortcuts.
 
 - [📝 Introduction](#introduction)
 - [🚀 Usage](#usage)
+- [✅ Supported Platforms](#supported-platforms)
 - [🤝 Contributing](#contributing)
 - [📄 License](#license)
 
@@ -59,6 +60,12 @@ To start using these aliases, follow these simple steps:
 
 Once you've completed these steps, you'll have access to a variety of aliases
 that can simplify your command line tasks.
+
+## Supported Platforms
+
+- Linux (`~/.bashrc`): Debian, RHEL/Fedora/Mariner, openSUSE/SLES variants
+- Linux (`~/.profile`): Alpine, Arch
+- macOS (`~/.zshrc`)
 
 ## Contributing
 
