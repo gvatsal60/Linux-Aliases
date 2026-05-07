@@ -107,14 +107,6 @@ alias unzip='unzip'     # Extract zip archives
 alias man='man -P less' # View and search through manual pages easily
 
 ###################################################################################################
-# Package Management (openSUSE)
-###################################################################################################
-alias zpu='sudo zypper refresh && sudo zypper update' # Refresh repositories and update packages
-alias zpi='sudo zypper install'                       # Install packages
-alias zpr='sudo zypper remove'                        # Remove packages
-alias zps='zypper search'                             # Search packages
-
-###################################################################################################
 # Text Processing
 ###################################################################################################
 alias grep='grep --color=auto' # Enable colorized grep output
