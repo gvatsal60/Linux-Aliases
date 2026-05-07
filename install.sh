@@ -60,7 +60,7 @@ print_err() {
 update_rc() {
     _rc=""
     case "${ADJUSTED_ID}" in
-    debian | rhel)
+    debian | rhel | opensuse)
         _rc="${HOME}/.bashrc"
         ;;
     alpine | arch)
@@ -138,6 +138,8 @@ Linux)
         ADJUSTED_ID="rhel"
     elif [ "${ID}" = "alpine" ]; then
         ADJUSTED_ID="alpine"
+    elif [ "${ID}" = "opensuse" ] || [ "${ID}" = "opensuse-leap" ] || [ "${ID}" = "opensuse-tumbleweed" ] || [ "${ID}" = "sles" ] || [ "${ID_LIKE#*opensuse}" != "${ID_LIKE}" ] || [ "${ID_LIKE#*suse}" != "${ID_LIKE}" ]; then
+        ADJUSTED_ID="opensuse"
     else
         print_err "Error: Linux distro ${ID} not supported."
         exit 1
