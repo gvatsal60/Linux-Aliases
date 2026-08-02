@@ -1,0 +1,9 @@
+name: Trigger Bot Merge
+on:
+  pull_request:
+permissions:
+  pull-requests: write
+  contents: write
+jobs:
+  call-auto-merge:
+    uses: gvatsal60/.github/.github/workflows/bot-pr-auto-approve-merge.yaml@08d0834f1b687dbab5353c7fb066d6b938699609
