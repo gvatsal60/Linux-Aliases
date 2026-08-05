@@ -25,6 +25,14 @@ repos:
       - id: pretty-format-json
         args: [--autofix]
       - id: trailing-whitespace
+  # shfmt hook for formatting shell scripts
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.13.1-1
+    hooks:
+      - id: shfmt
+        name: shfmt
+        description: This hook runs shfmt for formatting shell scripts
+        args: ['-i', '4']
   # ShellCheck hook for linting shell scripts
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: "v0.11.0.1"
