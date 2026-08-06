@@ -3,7 +3,6 @@
 ###################################################################################################
 # File: .aliases.sh
 # Author: [Vatsal Gupta (gvatsal60)]
-# Date: 12-Jul-2024
 # Description: This script defines convenient aliases for common commands.
 # Usage: Source this script in your shell profile (e.g., ~/.bashrc, ~/.zshrc).
 ###################################################################################################

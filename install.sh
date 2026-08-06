@@ -3,7 +3,6 @@
 ###################################################################################################
 # File: install.sh
 # Author: [Vatsal Gupta (gvatsal60)]
-# Date: 12-Jul-2024
 # Description: Setup of custom aliases on a Linux system by downloading a
 #              predefined .aliases.sh file from a GitHub repository and
 #              integrating it into the user's shell configuration
