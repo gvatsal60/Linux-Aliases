@@ -5,6 +5,6 @@ on:
     branches: ["master", "main"]
 jobs:
   trivy-scan:
-    uses: gvatsal60/.github/.github/workflows/trivy-scan.yaml@c75bcee46ecb94ecf49361b9d8a0911708d30ca9
+    uses: gvatsal60/.github/.github/workflows/trivy-scan.yaml@c36e485abb6a54a707d295bb3f8bf48ea5b61aa7
     with:
       dockerfile_exists: false
