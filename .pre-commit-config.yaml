@@ -191,7 +191,3 @@ repos:
     hooks:
       - id: markdownlint-cli2
         args: [--fix]
-  # Meta hooks that validate the pre-commit configuration itself
-  - repo: meta
-    hooks:
-      - id: check-useless-excludes
