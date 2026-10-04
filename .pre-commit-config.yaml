@@ -1,3 +1,5 @@
+# Canonical pre-commit configuration - identical across all repositories and branches.
+# Managed by gvatsal60/.github; keep in sync when hooks are added or upgraded.
 repos:
   # Syncs pre-commit dependencies with the latest versions.
   - repo: https://github.com/mxr/sync-pre-commit-deps
@@ -9,25 +11,110 @@ repos:
     rev: "v6.0.0"
     hooks:
       - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
       - id: check-case-conflict
+      - id: check-docstring-first
       - id: check-executables-have-shebangs
       - id: check-json
+        exclude: '\.ipynb$' # Exclude Jupyter notebooks
       - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
       - id: check-symlinks
+      - id: check-toml
       - id: check-vcs-permalinks
+      - id: check-xml
       - id: check-yaml
+        args: [--allow-multiple-documents] # Allow multi-document YAML streams
+      - id: debug-statements
       - id: destroyed-symlinks
+      # - id: detect-aws-credentials
+      - id: detect-private-key
       - id: double-quote-string-fixer
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
       - id: mixed-line-ending
+      - id: name-tests-test
       - id: pretty-format-json
         args: [--autofix]
+        exclude: '\.ipynb$' # Exclude Jupyter notebooks
+      - id: requirements-txt-fixer
       - id: trailing-whitespace
+  # Ruff for linting and formatting Python files
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.16.9"
+    hooks:
+      - id: ruff-check
+        args: [--fix, --unsafe-fixes]
+      - id: ruff-format
+  # Uses pygrep to enforce Python type annotations.
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: "v1.10.0"
+    hooks:
+      - id: python-use-type-annotations
+  # Runs mypy to check Python type annotations.
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v2.3.1"
+    hooks:
+      - id: mypy
+  # Pyupgrade for modernizing Python syntax
+  - repo: https://github.com/asottile/pyupgrade
+    rev: "v3.21.2"
+    hooks:
+      - id: pyupgrade
+  # Autopep8 for auto-formatting Python code
+  - repo: https://github.com/hhatto/autopep8
+    rev: "v2.3.2"
+    hooks:
+      - id: autopep8
+  # Isort for sorting Python imports
+  - repo: https://github.com/pycqa/isort
+    rev: "9.0.2"
+    hooks:
+      - id: isort
+  # Flake8 for linting Python files
+  - repo: https://github.com/pycqa/flake8
+    rev: "7.4.1"
+    hooks:
+      - id: flake8
+  # Clang-format for formatting C, C++, and JavaScript files
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: "v23.1.1"
+    hooks:
+      - id: clang-format
+  # ESLint for linting JavaScript and TypeScript files
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: "v10.11.0"
+    hooks:
+      - id: eslint
+  # Lints SCSS files to enforce style and best practices.
+  - repo: https://github.com/pre-commit/mirrors-scss-lint
+    rev: "v0.60.0"
+    hooks:
+      - id: scss-lint
+  # Runs JSHint to analyze JavaScript code for potential errors.
+  - repo: https://github.com/pre-commit/mirrors-jshint
+    rev: "v2.13.6"
+    hooks:
+      - id: jshint
+  # Uses fixmyjs to automatically fix simple JavaScript issues.
+  - repo: https://github.com/pre-commit/mirrors-fixmyjs
+    rev: "v2.0.0"
+    hooks:
+      - id: fixmyjs
+  # Runs CSSLint to check CSS files for errors and stylistic issues.
+  - repo: https://github.com/pre-commit/mirrors-csslint
+    rev: "v1.0.5"
+    hooks:
+      - id: csslint
+  # Nbstripout for stripping output from Jupyter Notebooks
+  - repo: https://github.com/kynan/nbstripout
+    rev: "0.9.1"
+    hooks:
+      - id: nbstripout
   # shfmt hook for formatting shell scripts
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.14.1-1
+    rev: "v3.14.1-1"
     hooks:
       - id: shfmt
         name: shfmt
@@ -50,7 +137,11 @@ repos:
         entry: bashate
         language: python
         types: [shell]
-        args: ["--error", "E006", "--ignore", "E006"]
+  # Actionlint for linting GitHub Actions YAML files
+  - repo: https://github.com/rhysd/actionlint
+    rev: "v1.7.12"
+    hooks:
+      - id: actionlint
   # Yamlfmt for formatting YAML files
   - repo: https://github.com/google/yamlfmt
     rev: "v0.21.0"
@@ -61,9 +152,42 @@ repos:
     rev: "v2.4.3"
     hooks:
       - id: codespell
+  # Checkmake for linting Makefiles
+  - repo: https://github.com/mrtazz/checkmake
+    rev: "v0.3.2"
+    hooks:
+      - id: checkmake
+  # SQLFluff for linting and fixing SQL files
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: "4.3.0"
+    hooks:
+      - id: sqlfluff-lint
+      - id: sqlfluff-fix
+  # RuboCop for linting Ruby files
+  - repo: https://github.com/rubocop/rubocop
+    rev: "v1.91.0"
+    hooks:
+      - id: rubocop
+  # Terraform-py for formatting and validating Terraform files
+  - repo: https://github.com/AleksaC/terraform-py
+    rev: "v1.16.4"
+    hooks:
+      - id: tf-fmt
+      - id: tf-validate
+  # Gitleaks for detecting secrets in Git repositories
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: "v8.30.1"
+    hooks:
+      - id: gitleaks
+  # Talisman for pre-commit Git hooks to detect sensitive files
+  - repo: https://github.com/thoughtworks/talisman
+    rev: "v1.37.0"
+    hooks:
+      - id: talisman-commit
+        entry: cmd --githook pre-commit
   # Markdownlint for linting Markdown files
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.23.3
+    rev: "v0.23.3"
     hooks:
       - id: markdownlint-cli2
         args: [--fix]
