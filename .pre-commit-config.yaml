@@ -30,7 +30,6 @@ repos:
       - id: destroyed-symlinks
       # - id: detect-aws-credentials
       - id: detect-private-key
-      - id: double-quote-string-fixer
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
       - id: mixed-line-ending
