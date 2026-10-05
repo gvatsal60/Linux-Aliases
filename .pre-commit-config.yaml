@@ -41,7 +41,7 @@ repos:
       - id: trailing-whitespace
   # Ruff for linting and formatting Python files
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.16.9"
+    rev: "v0.16.10"
     hooks:
       - id: ruff-check
         args: [--fix, --unsafe-fixes]
@@ -53,7 +53,7 @@ repos:
       - id: python-use-type-annotations
   # Runs mypy to check Python type annotations.
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v2.3.1"
+    rev: "v2.4.0"
     hooks:
       - id: mypy
   # Pyupgrade for modernizing Python syntax
@@ -78,12 +78,12 @@ repos:
       - id: flake8
   # Clang-format for formatting C, C++, and JavaScript files
   - repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: "v23.1.1"
+    rev: "v23.1.2"
     hooks:
       - id: clang-format
   # ESLint for linting JavaScript and TypeScript files
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: "v10.11.0"
+    rev: "v10.12.0"
     hooks:
       - id: eslint
   # Lints SCSS files to enforce style and best practices.
@@ -121,7 +121,7 @@ repos:
         args: ['-i', '4']
   # ShellCheck hook for linting shell scripts
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: "v0.11.0.1"
+    rev: "v0.11.0.1-1"
     hooks:
       - id: shellcheck
         name: shellcheck
@@ -153,12 +153,12 @@ repos:
       - id: codespell
   # Checkmake for linting Makefiles
   - repo: https://github.com/mrtazz/checkmake
-    rev: "v0.3.2"
+    rev: "v0.3.0"
     hooks:
       - id: checkmake
   # SQLFluff for linting and fixing SQL files
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: "4.3.0"
+    rev: "4.4.0"
     hooks:
       - id: sqlfluff-lint
       - id: sqlfluff-fix
@@ -169,13 +169,13 @@ repos:
       - id: rubocop
   # Terraform-py for formatting and validating Terraform files
   - repo: https://github.com/AleksaC/terraform-py
-    rev: "v1.16.4"
+    rev: "v1.16.5"
     hooks:
       - id: tf-fmt
       - id: tf-validate
   # Gitleaks for detecting secrets in Git repositories
   - repo: https://github.com/gitleaks/gitleaks
-    rev: "v8.30.1"
+    rev: "v8.30.0"
     hooks:
       - id: gitleaks
   # Talisman for pre-commit Git hooks to detect sensitive files
