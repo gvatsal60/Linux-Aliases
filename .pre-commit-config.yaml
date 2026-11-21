@@ -164,7 +164,7 @@ repos:
       - id: sqlfluff-fix
   # RuboCop for linting Ruby files
   - repo: https://github.com/rubocop/rubocop
-    rev: "v1.92.2"
+    rev: "v1.92.3"
     hooks:
       - id: rubocop
   # Terraform-py for formatting and validating Terraform files
