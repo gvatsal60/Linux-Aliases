@@ -83,7 +83,7 @@ repos:
       - id: clang-format
   # ESLint for linting JavaScript and TypeScript files
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: "v10.14.0"
+    rev: "v10.15.0"
     hooks:
       - id: eslint
   # Lints SCSS files to enforce style and best practices.
