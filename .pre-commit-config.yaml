@@ -108,7 +108,7 @@ repos:
       - id: csslint
   # Nbstripout for stripping output from Jupyter Notebooks
   - repo: https://github.com/kynan/nbstripout
-    rev: "0.9.1"
+    rev: "0.9.2"
     hooks:
       - id: nbstripout
   # shfmt hook for formatting shell scripts
