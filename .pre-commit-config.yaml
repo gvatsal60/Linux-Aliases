@@ -41,7 +41,7 @@ repos:
       - id: trailing-whitespace
   # Ruff for linting and formatting Python files
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.17.5"
+    rev: "v0.17.6"
     hooks:
       - id: ruff-check
         args: [--fix, --unsafe-fixes]
@@ -68,7 +68,7 @@ repos:
       - id: autopep8
   # Isort for sorting Python imports
   - repo: https://github.com/pycqa/isort
-    rev: "10.0.0b2"
+    rev: "10.0.0b3"
     hooks:
       - id: isort
   # Flake8 for linting Python files
@@ -121,7 +121,7 @@ repos:
         args: ['-i', '4']
   # ShellCheck hook for linting shell scripts
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: "v0.11.0.1"
+    rev: "v0.11.0.1-1"
     hooks:
       - id: shellcheck
         name: shellcheck
@@ -153,7 +153,7 @@ repos:
       - id: codespell
   # Checkmake for linting Makefiles
   - repo: https://github.com/mrtazz/checkmake
-    rev: "v0.3.2"
+    rev: "v0.3.0"
     hooks:
       - id: checkmake
   # SQLFluff for linting and fixing SQL files
@@ -169,13 +169,13 @@ repos:
       - id: rubocop
   # Terraform-py for formatting and validating Terraform files
   - repo: https://github.com/AleksaC/terraform-py
-    rev: "v1.17.1"
+    rev: "v1.17.2"
     hooks:
       - id: tf-fmt
       - id: tf-validate
   # Gitleaks for detecting secrets in Git repositories
   - repo: https://github.com/gitleaks/gitleaks
-    rev: "v8.30.1"
+    rev: "v8.30.0"
     hooks:
       - id: gitleaks
   # Talisman for pre-commit Git hooks to detect sensitive files
@@ -186,7 +186,7 @@ repos:
         entry: cmd --githook pre-commit
   # Markdownlint for linting Markdown files
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: "v0.24.1"
+    rev: "v0.24.2"
     hooks:
       - id: markdownlint-cli2
         args: [--fix]
